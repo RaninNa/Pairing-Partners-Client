@@ -1,3 +1,34 @@
 <resources>
     <string name="app_name">Pairing client</string>
+
+    <string-array name="faculty_array">
+        <item>חוג מדעי מחשב</item>
+        <item>חוג למערכות מידע</item>
+        <item>חוג לפילוסופיה</item>
+        <item>חוג לריפוי בעיסוק</item>
+        <item>חוג למתמטיקה</item>
+        <item>מדעי הרפואה</item>
+    </string-array>
+
+
+    <string-array name="courses_array">
+        <item>מבוא למדעי המחשב</item>
+        <item>מבוא לחמרה</item>
+        <item>מתמטיקה דיסקריטית</item>
+        <item>מבני נתונים</item>
+        <item>תכנון וניתוח אלגוריתמים</item>
+        <item>מודילים חישוביים</item>
+    </string-array>
+
+    <string-array name="type_array">
+        <item>תרגילי בית</item>
+        <item>פרויקט</item>
+        <item>התכוננות למבחן</item>
+    </string-array>
+
+    <string-array name="gender_array">
+        <item>מין</item>
+        <item>זכר</item>
+        <item>נקבה</item>
+    </string-array>
 </resources>
