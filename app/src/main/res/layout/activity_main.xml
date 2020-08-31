@@ -48,10 +48,10 @@
         android:id="@+id/btnCont"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/spinnerType"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:layout_below="@id/spinnerType"
-        android:text="המשיך" />
+        android:text="המשך" />
 
 
 </RelativeLayout>

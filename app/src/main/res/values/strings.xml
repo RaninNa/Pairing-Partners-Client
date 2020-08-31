@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Pairing client</string>
 
+
     <string-array name="faculty_array">
         <item>חוג מדעי מחשב</item>
         <item>חוג למערכות מידע</item>
@@ -31,4 +32,43 @@
         <item>זכר</item>
         <item>נקבה</item>
     </string-array>
+
+    <string-array name="location_array">
+        <item>מיקום</item>
+        <item>חיפה</item>
+        <item>תל אביב</item>
+        <item>אבו סנאן</item>
+        <item>סכנין</item>
+    </string-array>
+
+    <string-array name="working_way_array">
+        <item>שיטת העבודה המועדפת</item>
+        <item>לחלק את המשימות באופן שווה</item>
+        <item>עבודה ביחד</item>
+        <item>השוואת תוצאות סופיות</item>
+        <item>לא משנה</item>
+    </string-array>
+
+    <string-array name="meetings_array">
+        <item>אופן הפגישות</item>
+        <item>פגישות מכוונות</item>
+        <item>פגישות פיזיות</item>
+        <item>לא משנה</item>
+    </string-array>
+
+    <string-array name="preffered_gender_array">
+        <item>מין מועדף</item>
+        <item>זכר</item>
+        <item>נקבה</item>
+        <item>לא משנה</item>
+    </string-array>
+
+    <string-array name="working_time_array">
+        <item>שעות עבודה</item>
+        <item>בוקר</item>
+        <item>צהוריים</item>
+        <item>ערב</item>
+        <item>לא משנה</item>
+    </string-array>
+
 </resources>
