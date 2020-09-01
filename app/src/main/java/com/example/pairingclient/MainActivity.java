@@ -19,9 +19,9 @@ public class MainActivity extends AppCompatActivity {
         //first Usercef Commit
 
         Button btnCont =  (Button) findViewById(R.id.btnCont);
-        Spinner spinnerFaculty =  (Spinner) findViewById(R.id.spinnerFaculty);
-        Spinner spinnerCourses =  (Spinner) findViewById(R.id.spinnerCourses);
-        Spinner spinnerType =  (Spinner) findViewById(R.id.spinnerType);
+        final Spinner spinnerFaculty =  (Spinner) findViewById(R.id.spinnerFaculty);
+        final Spinner spinnerCourses =  (Spinner) findViewById(R.id.spinnerCourses);
+        final Spinner spinnerType =  (Spinner) findViewById(R.id.spinnerType);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.faculty_array, android.R.layout.simple_spinner_item);
         spinnerFaculty.setAdapter(adapter);
@@ -72,6 +72,9 @@ public class MainActivity extends AppCompatActivity {
         btnCont.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Globals.faculty=spinnerFaculty.getSelectedItem().toString();
+                Globals.course=spinnerCourses.getSelectedItem().toString();
+                Globals.workType=spinnerType.getSelectedItem().toString();
                 Intent intent = new Intent(MainActivity.this, RegisterInfoActivity.class);
                 MainActivity.this.startActivity(intent);
             }

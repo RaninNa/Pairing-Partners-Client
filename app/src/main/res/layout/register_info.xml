@@ -172,7 +172,7 @@
                 android:textSize="24sp" />
 
             <CheckBox
-                android:id="@+id/checkBox2"
+                android:id="@+id/checkBoxLocation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView"
@@ -184,15 +184,15 @@
                 android:text="מקום" />
 
             <CheckBox
-                android:id="@+id/checkBox1"
+                android:id="@+id/checkBoxGrade"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="60dp"
                 android:layout_marginRight="60dp"
-                android:layout_toStartOf="@+id/checkBox2"
-                android:layout_toLeftOf="@+id/checkBox2"
+                android:layout_toStartOf="@+id/checkBoxLocation"
+                android:layout_toLeftOf="@+id/checkBoxLocation"
                 android:text="ציון" />
 
             <CheckBox
@@ -201,11 +201,20 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="60dp"
                 android:layout_marginRight="60dp"
-                android:layout_toStartOf="@+id/checkBox1"
-                android:layout_toLeftOf="@+id/checkBox1"
+                android:layout_toStartOf="@+id/checkBoxGrade"
+                android:layout_toLeftOf="@+id/checkBoxGrade"
                 android:text="סתם" />
+
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/checkBoxGrade"
+                android:layout_marginTop="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="60dp"
+                android:text="שלח" />
 
 
         </RelativeLayout>
