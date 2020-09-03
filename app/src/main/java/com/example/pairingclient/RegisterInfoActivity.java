@@ -197,6 +197,17 @@ public class RegisterInfoActivity extends AppCompatActivity {
                     }
                 };
 
+                if (ETname.getText().toString().equals("") || ETphone.getText().toString().equals("") || ETemail.getText().toString().equals("")
+                        || ETAverage.getText().toString().equals("") || ETage.getText().toString().equals("")) {
+                    Toast.makeText(getApplicationContext(), "חובה למלא את כל הפרטים", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                if (spinnerGender.getSelectedItemPosition() == 0 || spinnerLocation.getSelectedItemPosition() == 0 || spinnerStudyYear.getSelectedItemPosition() == 0
+                        || spinnerWorkingWay.getSelectedItemPosition() == 0 || spinnerMeetings.getSelectedItemPosition() == 0 || spinnerPreferredGender.getSelectedItemPosition() == 0
+                        || spinnerPreferredGender.getSelectedItemPosition() == 0 || spinnerWorkingTime.getSelectedItemPosition() == 0) {
+                    Toast.makeText(getApplicationContext(), "חובה למלא את כל הפרטים", Toast.LENGTH_LONG).show();
+                    return;
+                }
 
                 String name = ETname.getText().toString();
                 String gender = spinnerGender.getSelectedItem().toString();

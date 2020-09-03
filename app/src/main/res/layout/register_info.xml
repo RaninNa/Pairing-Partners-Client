@@ -22,6 +22,7 @@
                 android:layout_marginTop="100dp"
                 android:background="@drawable/drawable_edittext"
                 android:textColorHint="@color/hintColor"
+                android:textColor="@color/EasyBlue"
                 android:paddingRight="10dp"
                 android:ems="10"
                 android:hint="שם פרטי"
@@ -35,6 +36,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
+                android:textColor="@color/EasyBlue"
                 android:gravity="center"
                 android:paddingBottom="10dp"
                 android:textAlignment="center"
@@ -48,6 +50,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
+                android:textColor="@color/EasyBlue"
                 android:gravity="center"
                 android:paddingBottom="10dp"
                 android:textAlignment="center"
@@ -63,6 +66,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/drawable_edittext"
                 android:textColorHint="@color/hintColor"
+                android:textColor="@color/EasyBlue"
                 android:paddingRight="10dp"
                 android:ems="10"
                 android:hint="גיל"
@@ -77,6 +81,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/drawable_edittext"
                 android:textColorHint="@color/hintColor"
+                android:textColor="@color/EasyBlue"
                 android:paddingRight="10dp"
                 android:ems="10"
                 android:hint="מספר טלפון"
@@ -91,6 +96,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/drawable_edittext"
                 android:textColorHint="@color/hintColor"
+                android:textColor="@color/EasyBlue"
                 android:paddingRight="10dp"
                 android:ems="10"
                 android:hint="אימייל"
@@ -107,6 +113,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/drawable_edittext"
                 android:textColorHint="@color/hintColor"
+                android:textColor="@color/EasyBlue"
                 android:paddingRight="10dp"
                 android:ems="10"
                 android:hint="ציון ממוצע"
@@ -120,6 +127,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
+                android:textColor="@color/EasyBlue"
                 android:gravity="center"
                 android:paddingBottom="10dp"
                 android:textAlignment="center"
@@ -137,6 +145,7 @@
                 android:layout_marginTop="100dp"
                 android:gravity="center"
                 android:paddingBottom="10dp"
+                android:textColor="@color/EasyBlue"
                 android:textAlignment="center"
                 android:textSize="20dp" />
 
@@ -150,6 +159,7 @@
                 android:layout_marginTop="20dp"
                 android:gravity="center"
                 android:paddingBottom="10dp"
+                android:textColor="@color/EasyBlue"
                 android:textAlignment="center"
                 android:textSize="20dp" />
 
@@ -163,6 +173,7 @@
                 android:layout_marginTop="20dp"
                 android:gravity="center"
                 android:paddingBottom="10dp"
+                android:textColor="@color/EasyBlue"
                 android:textAlignment="center"
                 android:textSize="20dp" />
 
@@ -176,6 +187,7 @@
                 android:layout_marginTop="20dp"
                 android:gravity="center"
                 android:paddingBottom="10dp"
+                android:textColor="@color/EasyBlue"
                 android:textAlignment="center"
                 android:textSize="20dp" />
 
@@ -191,6 +203,7 @@
                 android:layout_marginTop="100dp"
                 android:layout_marginEnd="50dp"
                 android:layout_marginRight="90dp"
+                android:textColor="@color/EasyBlue"
                 android:text="סמן את הקריטריונים החשובים"
                 android:textSize="24sp" />
 
@@ -204,6 +217,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="100dp"
                 android:layout_marginRight="100dp"
+                android:textColor="@color/EasyBlue"
                 android:text="מקום" />
 
             <CheckBox
@@ -216,6 +230,7 @@
                 android:layout_marginRight="60dp"
                 android:layout_toStartOf="@+id/checkBoxLocation"
                 android:layout_toLeftOf="@+id/checkBoxLocation"
+                android:textColor="@color/EasyBlue"
                 android:text="ציון" />
 
 
@@ -227,6 +242,7 @@
                 android:layout_marginTop="40dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="60dp"
+                android:textColor="@color/EasyBlue"
                 android:text="שלח" />
 
 
