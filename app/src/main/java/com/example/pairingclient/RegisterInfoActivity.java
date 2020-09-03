@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -29,7 +30,7 @@ public class RegisterInfoActivity extends AppCompatActivity {
         final EditText ETage = (EditText) findViewById(R.id.editTextTextAge);
         final EditText ETphone = (EditText) findViewById(R.id.editTextTextPhone);
         final EditText ETemail = (EditText) findViewById(R.id.editTextTextEmail);
-        final EditText ETyear = (EditText) findViewById(R.id.editTextTextStudyYear);
+        final Spinner spinnerStudyYear = (Spinner) findViewById(R.id.spinnerStudYear);
         final EditText ETAverage = (EditText) findViewById(R.id.editTextTextGPA);
 
         final CheckBox CBiLocation = (CheckBox) findViewById(R.id.checkBoxLocation);
@@ -137,6 +138,21 @@ public class RegisterInfoActivity extends AppCompatActivity {
 
             }
         });
+        ArrayAdapter<CharSequence> adapter7 = ArrayAdapter.createFromResource(this,
+                R.array.study_year_array, android.R.layout.simple_spinner_item);
+        spinnerStudyYear.setAdapter(adapter7);
+        spinnerStudyYear.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                //Toast.makeText(getContext(), "this is " + i, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
 
         Button btnRegister = (Button) findViewById(R.id.btnRegister);
@@ -154,6 +170,7 @@ public class RegisterInfoActivity extends AppCompatActivity {
                             boolean success = jsonResponse.getBoolean("success");
                             String id = jsonResponse.getString("id");
                             if (success) {
+                                Toast.makeText(getApplicationContext(), "שליחה התבצעה", Toast.LENGTH_LONG).show();
                                 //Intent intent = new Intent();
                                 //getActivity().startActivity(intent);
                                 //Intent intent = new Intent(AuthenticateUser.this, RegisterEventActivity.class);
@@ -167,6 +184,7 @@ public class RegisterInfoActivity extends AppCompatActivity {
                                 }
 
                             } else {
+                                Toast.makeText(getApplicationContext(), "שליחה נכשלה", Toast.LENGTH_LONG).show();
                                 AlertDialog.Builder builder = new AlertDialog.Builder(RegisterInfoActivity.this);
                                 builder.setMessage("Register Failed")
                                         .setNegativeButton("Retry", null)
@@ -179,6 +197,17 @@ public class RegisterInfoActivity extends AppCompatActivity {
                     }
                 };
 
+                if (ETname.getText().toString().equals("") || ETphone.getText().toString().equals("") || ETemail.getText().toString().equals("")
+                        || ETAverage.getText().toString().equals("") || ETage.getText().toString().equals("")) {
+                    Toast.makeText(getApplicationContext(), "חובה למלא את כל הפרטים", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                if (spinnerGender.getSelectedItemPosition() == 0 || spinnerLocation.getSelectedItemPosition() == 0 || spinnerStudyYear.getSelectedItemPosition() == 0
+                        || spinnerWorkingWay.getSelectedItemPosition() == 0 || spinnerMeetings.getSelectedItemPosition() == 0 || spinnerPreferredGender.getSelectedItemPosition() == 0
+                        || spinnerPreferredGender.getSelectedItemPosition() == 0 || spinnerWorkingTime.getSelectedItemPosition() == 0) {
+                    Toast.makeText(getApplicationContext(), "חובה למלא את כל הפרטים", Toast.LENGTH_LONG).show();
+                    return;
+                }
 
                 String name = ETname.getText().toString();
                 String gender = spinnerGender.getSelectedItem().toString();
@@ -186,7 +215,7 @@ public class RegisterInfoActivity extends AppCompatActivity {
                 int age = Integer.parseInt(ETage.getText().toString());
                 String phone = ETphone.getText().toString();
                 String email = ETemail.getText().toString();
-                String year = ETyear.getText().toString();
+                String year = spinnerStudyYear.getSelectedItem().toString();
                 String gradeAverage = ETAverage.getText().toString();
                 String workPlan = spinnerWorkingWay.getSelectedItem().toString();
                 String meeting = spinnerMeetings.getSelectedItem().toString();

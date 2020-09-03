@@ -71,4 +71,10 @@
         <item>לא משנה</item>
     </string-array>
 
+    <string-array name="study_year_array">
+        <item>שנת לימודים</item>
+        <item>שנה א</item>
+        <item>שנה ב</item>
+        <item>שנה ג ומעלה</item>
+    </string-array>
 </resources>
