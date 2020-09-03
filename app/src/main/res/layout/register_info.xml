@@ -17,66 +17,14 @@
             <EditText
                 android:id="@+id/editTextTextPersonName"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="100dp"
+                android:background="@drawable/drawable_edittext"
+                android:textColorHint="@color/hintColor"
+                android:paddingRight="10dp"
                 android:ems="10"
                 android:hint="שם פרטי"
-                android:inputType="textPersonName" />
-
-            <EditText
-                android:id="@+id/editTextTextAge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/spinnerLocation"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                android:ems="10"
-                android:hint="גיל"
-                android:inputType="textPersonName" />
-
-            <EditText
-                android:id="@+id/editTextTextPhone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/editTextTextAge"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                android:ems="10"
-                android:hint="מספר טלפון"
-                android:inputType="textPersonName" />
-
-            <EditText
-                android:id="@+id/editTextTextEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/editTextTextPhone"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                android:ems="10"
-                android:hint="אימייל"
-                android:inputType="textPersonName" />
-
-            <EditText
-                android:id="@+id/editTextTextStudyYear"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/editTextTextEmail"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                android:ems="10"
-                android:hint="שנת לימודים"
-                android:inputType="textPersonName" />
-
-            <EditText
-                android:id="@+id/editTextTextGPA"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/editTextTextStudyYear"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                android:ems="10"
-                android:hint="ציון ממוצע"
                 android:inputType="textPersonName" />
 
             <Spinner
@@ -93,10 +41,97 @@
                 android:textSize="20dp" />
 
             <Spinner
+                android:id="@+id/spinnerLocation"
+                android:layout_width="240dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/spinnerGender"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:paddingBottom="10dp"
+                android:textAlignment="center"
+                android:textSize="20dp"
+                />
+
+            <EditText
+                android:id="@+id/editTextTextAge"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@+id/spinnerLocation"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/drawable_edittext"
+                android:textColorHint="@color/hintColor"
+                android:paddingRight="10dp"
+                android:ems="10"
+                android:hint="גיל"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/editTextTextPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@+id/editTextTextAge"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/drawable_edittext"
+                android:textColorHint="@color/hintColor"
+                android:paddingRight="10dp"
+                android:ems="10"
+                android:hint="מספר טלפון"
+                android:inputType="phone" />
+
+            <EditText
+                android:id="@+id/editTextTextEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@+id/editTextTextPhone"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/drawable_edittext"
+                android:textColorHint="@color/hintColor"
+                android:paddingRight="10dp"
+                android:ems="10"
+                android:hint="אימייל"
+                android:inputType="textPersonName" />
+
+
+
+            <EditText
+                android:id="@+id/editTextTextGPA"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@+id/editTextTextEmail"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/drawable_edittext"
+                android:textColorHint="@color/hintColor"
+                android:paddingRight="10dp"
+                android:ems="10"
+                android:hint="ציון ממוצע"
+                android:inputType="numberDecimal" />
+
+            <Spinner
+                android:id="@+id/spinnerStudYear"
+                android:layout_width="240dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/editTextTextGPA"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:paddingBottom="10dp"
+                android:textAlignment="center"
+                android:textSize="20dp" />
+
+
+
+            <Spinner
                 android:id="@+id/spinnerWorkingWay"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
-                android:layout_below="@+id/editTextTextGPA"
+                android:layout_below="@+id/spinnerStudYear"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:layout_marginTop="100dp"
@@ -144,22 +179,10 @@
                 android:textAlignment="center"
                 android:textSize="20dp" />
 
-            <Spinner
-                android:id="@+id/spinnerLocation"
-                android:layout_width="240dp"
-                android:layout_height="50dp"
-                android:layout_below="@+id/spinnerGender"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:paddingBottom="10dp"
-                android:textAlignment="center"
-                android:textSize="20dp"
-                />
+
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/textViewNote"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/spinnerWorkingTime"
@@ -175,7 +198,7 @@
                 android:id="@+id/checkBoxLocation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textView"
+                android:layout_below="@+id/textViewNote"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="20dp"
@@ -187,7 +210,7 @@
                 android:id="@+id/checkBoxGrade"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textView"
+                android:layout_below="@+id/textViewNote"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="60dp"
                 android:layout_marginRight="60dp"
@@ -195,16 +218,6 @@
                 android:layout_toLeftOf="@+id/checkBoxLocation"
                 android:text="ציון" />
 
-            <CheckBox
-                android:id="@+id/checkBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textView"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="60dp"
-                android:layout_toStartOf="@+id/checkBoxGrade"
-                android:layout_toLeftOf="@+id/checkBoxGrade"
-                android:text="סתם" />
 
             <Button
                 android:id="@+id/btnRegister"
