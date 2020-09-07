@@ -14,13 +14,14 @@ public class RegisterUserReq extends StringRequest {
     private static final String REGISTER_USER_REQUEST_URL = "https://pairingapp.000webhostapp.com/registerUserName.php";
     private Map<String, String> params;
 
-    public RegisterUserReq(String name, String gender,String location, int age, String phone, String email, String year, String gradeAverage, String workPlan, String meeting, String prefGen, String workHours, Boolean iLocation,
+    public RegisterUserReq(String user_name, String name, String gender,String location, int age, String phone, String email, String year, String gradeAverage, String workPlan, String meeting, String prefGen, String workHours, Boolean iLocation,
                            Boolean iGrade, String faculty, String course, String workType, String dbname, String dbuser, String dbpass, Response.Listener<String> listener) {
         super(Request.Method.POST, REGISTER_REQUEST_URL, listener, null);
         params = new HashMap<>();
         params.put("dbname", dbname);
         params.put("dbuser", dbuser);
         params.put("dbpass", dbpass);
+        params.put("user_name", user_name);
         params.put("name", name);
         params.put("gender", gender);
         params.put("location", location);
