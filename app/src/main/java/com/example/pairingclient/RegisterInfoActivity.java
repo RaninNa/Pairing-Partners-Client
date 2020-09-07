@@ -209,6 +209,7 @@ public class RegisterInfoActivity extends AppCompatActivity {
                     return;
                 }
 
+                String user_name = Globals.global_user_name;
                 String name = ETname.getText().toString();
                 String gender = spinnerGender.getSelectedItem().toString();
                 String location = spinnerLocation.getSelectedItem().toString();
@@ -227,7 +228,7 @@ public class RegisterInfoActivity extends AppCompatActivity {
                 String course = Globals.course;
                 String workType = Globals.workType;
 
-                RegisterUserReq registerRequest = new RegisterUserReq(name, gender, location, age, phone, email, year, gradeAverage, workPlan,
+                RegisterUserReq registerRequest = new RegisterUserReq(user_name, name, gender, location, age, phone, email, year, gradeAverage, workPlan,
                         meeting, prefGen, workHours, iLocation, iGrade, faculty, course, workType, "id14702484_clients", "id14702484_pairingapp", "Pairing2020YR!", responseListener);
                 RequestQueue queue = Volley.newRequestQueue(RegisterInfoActivity.this);
                 queue.add(registerRequest);

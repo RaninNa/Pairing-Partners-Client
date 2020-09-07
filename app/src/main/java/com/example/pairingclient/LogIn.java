@@ -17,12 +17,13 @@ public class LogIn extends AppCompatActivity {
 
         Button logInBtn =  (Button) findViewById(R.id.logInBtn);
         Button registerBtn =  (Button) findViewById(R.id.registerBtn);
-        final EditText user_name = (EditText) findViewById(R.id.UserName);
-        final EditText password = (EditText) findViewById(R.id.UserPassword);
+        final EditText user_nameT = (EditText) findViewById(R.id.UserName);
+        final EditText passwordT = (EditText) findViewById(R.id.UserPassword);
 
         logInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Globals.global_user_name = user_nameT.getText().toString();
                 Intent intent = new Intent(LogIn.this, MainActivity.class);
                 LogIn.this.startActivity(intent);
             }
