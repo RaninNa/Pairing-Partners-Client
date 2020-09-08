@@ -18,7 +18,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="250dp"
         android:ems="10"
-        android:hint="User Name"
+        android:hint="שם משתמש"
         android:inputType="textPersonName" />
 
     <EditText
@@ -29,28 +29,28 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="Password"
+        android:hint="סיסמה"
         android:inputType="textPassword" />
-
-    <Button
-        android:id="@+id/logInBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/UserPassword"
-        android:layout_marginLeft="110dp"
-        android:layout_marginTop="20dp"
-        android:text="Log In" />
 
     <Button
         android:id="@+id/registerBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/UserPassword"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="20dp"
+        android:text="הרשמה" />
+
+    <Button
+        android:id="@+id/logInBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/UserPassword"
         android:layout_marginStart="11dp"
         android:layout_marginLeft="11dp"
         android:layout_marginTop="20dp"
-        android:layout_toEndOf="@+id/logInBtn"
-        android:layout_toRightOf="@+id/logInBtn"
-        android:text="Register" />
+        android:layout_toEndOf="@+id/registerBtn"
+        android:layout_toRightOf="@+id/registerBtn"
+        android:text="כניסה" />
   </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

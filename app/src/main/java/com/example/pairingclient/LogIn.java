@@ -42,7 +42,7 @@ public class LogIn extends AppCompatActivity {
                             String id = jsonResponse.getString("id");
                             if (success) {
                                 Globals.global_user_name = user_nameT.getText().toString();
-                                Intent intent = new Intent(LogIn.this, MainActivity.class);
+                                Intent intent = new Intent(LogIn.this, Menu.class);
                                 LogIn.this.startActivity(intent);
 
                                 try {
