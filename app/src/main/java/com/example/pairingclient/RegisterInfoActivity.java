@@ -22,6 +22,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -59,6 +60,7 @@ public class RegisterInfoActivity extends AppCompatActivity {
             }
         });
 
+        /*
         final Spinner spinnerLocation = (Spinner) findViewById(R.id.spinnerLocation);
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
                 R.array.location_array, android.R.layout.simple_spinner_item);
@@ -75,7 +77,7 @@ public class RegisterInfoActivity extends AppCompatActivity {
 
             }
         });
-
+        */
         final Spinner spinnerWorkingWay = (Spinner) findViewById(R.id.spinnerWorkingWay);
         ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this,
                 R.array.working_way_array, android.R.layout.simple_spinner_item);
@@ -127,7 +129,27 @@ public class RegisterInfoActivity extends AppCompatActivity {
             }
         });
 
+
+        final String[] hours = {"שעות עבודה", "בוקר", "צהוריים", "ערב"};
+
         final Spinner spinnerWorkingTime = (Spinner) findViewById(R.id.spinnerWorkingTime);
+
+        ArrayList<ItemSpinner> listhours = new ArrayList<>();
+
+        for (int i = 0; i < hours.length; i++) {
+            ItemSpinner itemSpinner = new ItemSpinner();
+            itemSpinner.setTitle(hours[i]);
+            itemSpinner.setSelected(false);
+            listhours.add(itemSpinner);
+        }
+        MyAdapter myAdapter = new MyAdapter(RegisterInfoActivity.this, 0,
+                listhours);
+        spinnerWorkingTime.setAdapter(myAdapter);
+
+
+
+
+/*
         ArrayAdapter<CharSequence> adapter6 = ArrayAdapter.createFromResource(this,
                 R.array.working_time_array, android.R.layout.simple_spinner_item);
         spinnerWorkingTime.setAdapter(adapter6);
@@ -143,6 +165,16 @@ public class RegisterInfoActivity extends AppCompatActivity {
 
             }
         });
+            */
+
+
+
+
+
+
+
+
+
         ArrayAdapter<CharSequence> adapter7 = ArrayAdapter.createFromResource(this,
                 R.array.study_year_array, android.R.layout.simple_spinner_item);
         spinnerStudyYear.setAdapter(adapter7);
@@ -169,13 +201,9 @@ public class RegisterInfoActivity extends AppCompatActivity {
                 RegisterInfoActivity.this.startActivity(intent);
             }
         });
-        Button btnShowLoc = (Button) findViewById(R.id.btnShowLocation);
-        btnShowLoc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "lat: " + Globals.Location.latitude + " long: " + Globals.Location.longitude, Toast.LENGTH_LONG).show();
-            }
-        });
+
+        //Toast.makeText(getApplicationContext(), "lat: " + Globals.Location.latitude + " long: " + Globals.Location.longitude, Toast.LENGTH_LONG).show();
+
 
 
 
@@ -224,9 +252,13 @@ public class RegisterInfoActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "חובה למלא את כל הפרטים", Toast.LENGTH_LONG).show();
                     return;
                 }
-                if (spinnerGender.getSelectedItemPosition() == 0 || spinnerLocation.getSelectedItemPosition() == 0 || spinnerStudyYear.getSelectedItemPosition() == 0
+                if (Globals.Location == null) {
+                    Toast.makeText(getApplicationContext(), "חובה לבחור מקום", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                if (spinnerGender.getSelectedItemPosition() == 0 /*  || spinnerLocation.getSelectedItemPosition() == 0 */ || spinnerStudyYear.getSelectedItemPosition() == 0
                         || spinnerWorkingWay.getSelectedItemPosition() == 0 || spinnerMeetings.getSelectedItemPosition() == 0 || spinnerPreferredGender.getSelectedItemPosition() == 0
-                        || spinnerPreferredGender.getSelectedItemPosition() == 0 || spinnerWorkingTime.getSelectedItemPosition() == 0) {
+                        || spinnerPreferredGender.getSelectedItemPosition() == 0 ) {
                     Toast.makeText(getApplicationContext(), "חובה למלא את כל הפרטים", Toast.LENGTH_LONG).show();
                     return;
                 }
@@ -234,7 +266,7 @@ public class RegisterInfoActivity extends AppCompatActivity {
                 String user_name = Globals.global_user_name;
                 String name = ETname.getText().toString();
                 String gender = spinnerGender.getSelectedItem().toString();
-                String location = spinnerLocation.getSelectedItem().toString();
+                String location = Globals.Location.latitude + "@" + Globals.Location.longitude;//spinnerLocation.getSelectedItem().toString();
                 int age = Integer.parseInt(ETage.getText().toString());
                 String phone = ETphone.getText().toString();
                 String email = ETemail.getText().toString();
@@ -243,16 +275,24 @@ public class RegisterInfoActivity extends AppCompatActivity {
                 String workPlan = spinnerWorkingWay.getSelectedItem().toString();
                 String meeting = spinnerMeetings.getSelectedItem().toString();
                 String prefGen = spinnerPreferredGender.getSelectedItem().toString();
-                String workHours = spinnerWorkingTime.getSelectedItem().toString();
+
+                String workHours = "";// = spinnerWorkingTime.getSelectedItem().toString();
+                for (int c = 1; c < 4; c++) {
+                    if (((ItemSpinner) (spinnerWorkingTime.getItemAtPosition(c))).isSelected()) {
+                        workHours += ((ItemSpinner) (spinnerWorkingTime.getItemAtPosition(c))).isSelected() + "@";
+                    }
+                }
+                if(workHours.equals(""))
+                {
+                    Toast.makeText(getApplicationContext(), "חובה למלא את כל הפרטים", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                workHours = workHours.substring(0, workHours.length() - 1);
                 Boolean iLocation = CBiLocation.isChecked();
                 Boolean iGrade = CBiGrade.isChecked();
                 String faculty = Globals.faculty;
                 String course = Globals.course;
                 String workType = Globals.workType;
-
-
-
-
 
 
                 RegisterUserReq registerRequest = new RegisterUserReq(user_name, name, gender, location, age, phone, email, year, gradeAverage, workPlan,
@@ -265,44 +305,4 @@ public class RegisterInfoActivity extends AppCompatActivity {
         });
     }
 
-    public double CalculationByDistance(LatLng StartP, LatLng EndP) {
-        int Radius = 6371;// radius of earth in Km
-        double lat1 = StartP.latitude;
-        double lat2 = EndP.latitude;
-        double lon1 = StartP.longitude;
-        double lon2 = EndP.longitude;
-        double dLat = Math.toRadians(lat2 - lat1);
-        double dLon = Math.toRadians(lon2 - lon1);
-        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
-                + Math.cos(Math.toRadians(lat1))
-                * Math.cos(Math.toRadians(lat2)) * Math.sin(dLon / 2)
-                * Math.sin(dLon / 2);
-        double c = 2 * Math.asin(Math.sqrt(a));
-        double valueResult = Radius * c;
-        double km = valueResult / 1;
-        DecimalFormat newFormat = new DecimalFormat("####");
-        int kmInDec = Integer.valueOf(newFormat.format(km));
-        double meter = valueResult % 1000;
-        int meterInDec = Integer.valueOf(newFormat.format(meter));
-        Log.i("Radius Value", "" + valueResult + "   KM  " + kmInDec
-                + " Meter   " + meterInDec);
-
-        return Radius * c;
-        /*
-        LatLng latLng;
-        Double l1=latlng.latitude;
-        Double l2=latlng.longitude;
-        String coordl1 = l1.toString();
-        String coordl2 = l2.toString();
-        l1 = Double.parseDouble(coordl1);
-        l2 = Double.parseDouble(coordl2);
-
-
-        googleMap.addMarker(new MarkerOptions()
-                .position(new LatLng(l1, l2))
-                .title(title)
-                .snippet(info));
-                */
-
-    }
 }
