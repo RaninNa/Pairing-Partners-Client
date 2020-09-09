@@ -131,8 +131,10 @@ public class RegisterInfoActivity extends AppCompatActivity {
 
 
         final String[] hours = {"שעות עבודה", "בוקר", "צהוריים", "ערב"};
+        final String[] days = {"ימי עבודה", "יום א", "יום ב", "יום ג","יום ד", "יום ה","יום ו", "יום ש"};
 
         final Spinner spinnerWorkingTime = (Spinner) findViewById(R.id.spinnerWorkingTime);
+        final Spinner spinnerWorkingDays = (Spinner) findViewById(R.id.spinnerWorkingDays);
 
         ArrayList<ItemSpinner> listhours = new ArrayList<>();
 
@@ -142,13 +144,22 @@ public class RegisterInfoActivity extends AppCompatActivity {
             itemSpinner.setSelected(false);
             listhours.add(itemSpinner);
         }
-        MyAdapter myAdapter = new MyAdapter(RegisterInfoActivity.this, 0,
+        MyAdapter myAdapterHours = new MyAdapter(RegisterInfoActivity.this, 0,
                 listhours);
-        spinnerWorkingTime.setAdapter(myAdapter);
+        spinnerWorkingTime.setAdapter(myAdapterHours);
 
+        ArrayList<ItemSpinner> listdays = new ArrayList<>();
 
+        for (int i = 0; i < days.length; i++) {
+            ItemSpinner itemSpinner = new ItemSpinner();
+            itemSpinner.setTitle(days[i]);
+            itemSpinner.setSelected(false);
+            listdays.add(itemSpinner);
+        }
+        MyAdapter myAdapterDays = new MyAdapter(RegisterInfoActivity.this, 0,
+                listdays);
 
-
+        spinnerWorkingDays.setAdapter(myAdapterDays);
 /*
         ArrayAdapter<CharSequence> adapter6 = ArrayAdapter.createFromResource(this,
                 R.array.working_time_array, android.R.layout.simple_spinner_item);
@@ -258,7 +269,7 @@ public class RegisterInfoActivity extends AppCompatActivity {
                 }
                 if (spinnerGender.getSelectedItemPosition() == 0 /*  || spinnerLocation.getSelectedItemPosition() == 0 */ || spinnerStudyYear.getSelectedItemPosition() == 0
                         || spinnerWorkingWay.getSelectedItemPosition() == 0 || spinnerMeetings.getSelectedItemPosition() == 0 || spinnerPreferredGender.getSelectedItemPosition() == 0
-                        || spinnerPreferredGender.getSelectedItemPosition() == 0 ) {
+                        || spinnerPreferredGender.getSelectedItemPosition() == 0) {
                     Toast.makeText(getApplicationContext(), "חובה למלא את כל הפרטים", Toast.LENGTH_LONG).show();
                     return;
                 }
@@ -282,12 +293,26 @@ public class RegisterInfoActivity extends AppCompatActivity {
                         workHours += ((ItemSpinner) (spinnerWorkingTime.getItemAtPosition(c))).isSelected() + "@";
                     }
                 }
-                if(workHours.equals(""))
-                {
-                    Toast.makeText(getApplicationContext(), "חובה למלא את כל הפרטים", Toast.LENGTH_LONG).show();
+                if (workHours.equals("")) {
+                    Toast.makeText(getApplicationContext(), "חובה למלא את שעות העבודה", Toast.LENGTH_LONG).show();
                     return;
                 }
                 workHours = workHours.substring(0, workHours.length() - 1);
+
+
+                String workdays = "";// = spinnerWorkingTime.getSelectedItem().toString();
+                for (int c = 1; c < 8; c++) {
+                    if (((ItemSpinner) (spinnerWorkingDays.getItemAtPosition(c))).isSelected()) {
+                        workdays += ((ItemSpinner) (spinnerWorkingDays.getItemAtPosition(c))).isSelected() + "@";
+                    }
+                }
+                if (workdays.equals("")) {
+                    Toast.makeText(getApplicationContext(), "חובה למלא את ימי העבודה", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                workdays = workdays.substring(0, workdays.length() - 1);
+                workHours = workdays + "-" + workHours;
+
                 Boolean iLocation = CBiLocation.isChecked();
                 Boolean iGrade = CBiGrade.isChecked();
                 String faculty = Globals.faculty;
