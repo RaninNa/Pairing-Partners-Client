@@ -57,11 +57,34 @@
                 android:textSize="20dp"
                 />
 
+            <Button
+                android:id="@+id/btnPickLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spinnerLocation"
+                android:layout_marginTop="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/EasyBlue"
+                android:text="pick location" />
+
+            <Button
+                android:id="@+id/btnShowLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnPickLocation"
+                android:layout_marginTop="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/EasyBlue"
+                android:text="show location" />
+
+
             <EditText
                 android:id="@+id/editTextTextAge"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:layout_below="@+id/spinnerLocation"
+                android:layout_below="@+id/btnShowLocation"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/drawable_edittext"
