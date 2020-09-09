@@ -1,7 +1,9 @@
 package com.example.pairingclient;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,9 +16,12 @@ import android.widget.Toast;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.maps.model.LatLng;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.text.DecimalFormat;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -156,6 +161,23 @@ public class RegisterInfoActivity extends AppCompatActivity {
 
 
         Button btnRegister = (Button) findViewById(R.id.btnRegister);
+        Button btnPickUp = (Button) findViewById(R.id.btnPickLocation);
+        btnPickUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RegisterInfoActivity.this, ActivityLocation.class);
+                RegisterInfoActivity.this.startActivity(intent);
+            }
+        });
+        Button btnShowLoc = (Button) findViewById(R.id.btnShowLocation);
+        btnShowLoc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "lat: " + Globals.Location.latitude + " long: " + Globals.Location.longitude, Toast.LENGTH_LONG).show();
+            }
+        });
+
+
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -228,6 +250,11 @@ public class RegisterInfoActivity extends AppCompatActivity {
                 String course = Globals.course;
                 String workType = Globals.workType;
 
+
+
+
+
+
                 RegisterUserReq registerRequest = new RegisterUserReq(user_name, name, gender, location, age, phone, email, year, gradeAverage, workPlan,
                         meeting, prefGen, workHours, iLocation, iGrade, faculty, course, workType, "id14702484_clients", "id14702484_pairingapp", "Pairing2020YR!", responseListener);
                 RequestQueue queue = Volley.newRequestQueue(RegisterInfoActivity.this);
@@ -236,5 +263,46 @@ public class RegisterInfoActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public double CalculationByDistance(LatLng StartP, LatLng EndP) {
+        int Radius = 6371;// radius of earth in Km
+        double lat1 = StartP.latitude;
+        double lat2 = EndP.latitude;
+        double lon1 = StartP.longitude;
+        double lon2 = EndP.longitude;
+        double dLat = Math.toRadians(lat2 - lat1);
+        double dLon = Math.toRadians(lon2 - lon1);
+        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
+                + Math.cos(Math.toRadians(lat1))
+                * Math.cos(Math.toRadians(lat2)) * Math.sin(dLon / 2)
+                * Math.sin(dLon / 2);
+        double c = 2 * Math.asin(Math.sqrt(a));
+        double valueResult = Radius * c;
+        double km = valueResult / 1;
+        DecimalFormat newFormat = new DecimalFormat("####");
+        int kmInDec = Integer.valueOf(newFormat.format(km));
+        double meter = valueResult % 1000;
+        int meterInDec = Integer.valueOf(newFormat.format(meter));
+        Log.i("Radius Value", "" + valueResult + "   KM  " + kmInDec
+                + " Meter   " + meterInDec);
+
+        return Radius * c;
+        /*
+        LatLng latLng;
+        Double l1=latlng.latitude;
+        Double l2=latlng.longitude;
+        String coordl1 = l1.toString();
+        String coordl2 = l2.toString();
+        l1 = Double.parseDouble(coordl1);
+        l2 = Double.parseDouble(coordl2);
+
+
+        googleMap.addMarker(new MarkerOptions()
+                .position(new LatLng(l1, l2))
+                .title(title)
+                .snippet(info));
+                */
+
     }
 }
