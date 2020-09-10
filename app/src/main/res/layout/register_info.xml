@@ -177,10 +177,24 @@
                 android:textSize="20dp" />
 
             <Spinner
-                android:id="@+id/spinnerWorkingTime"
+                android:id="@+id/spinnerWorkingDays"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:layout_below="@+id/spinnerPreferredGender"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:paddingBottom="10dp"
+                android:textColor="@color/EasyBlue"
+                android:textAlignment="center"
+                android:textSize="20dp" />
+
+            <Spinner
+                android:id="@+id/spinnerWorkingTime"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/spinnerWorkingDays"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
