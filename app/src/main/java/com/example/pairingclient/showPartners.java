@@ -41,17 +41,19 @@ public class showPartners extends AppCompatActivity {
                                 for (int i = 0; i < jsonData.length(); i++) {
                                     int id = jsonData.getJSONObject(i).getInt("id");
                                     String Name = jsonData.getJSONObject(i).getString("nameOfPair");
+                                    String faculty = jsonData.getJSONObject(i).getString("faculty");
                                     String course = jsonData.getJSONObject(i).getString("course");
+                                    String workType = jsonData.getJSONObject(i).getString("workType");
                                     String Email = jsonData.getJSONObject(i).getString("emailOfPair");
                                     String Phone = jsonData.getJSONObject(i).getString("phoneOfPair");
 
-                                    Partner partner = new Partner(Name, course, Email, Phone);
+                                    Partner partner = new Partner(Name, faculty, course, workType, Email, Phone);
                                     Globals.partners[i] = partner;
                                 }
 
                                 String partners_string = "";
                                 for(int i = 0; i < Globals.partners.length ; i++) {
-                                    partners_string += "Course: " + Globals.partners[i].getCourse() + "\nPartner: " + Globals.partners[i].getName() + "\nPhone: "
+                                    partners_string += "Course: " + Globals.partners[i].getCourse()  + "\nTask: " + Globals.partners[i].getWorkType() + "\nPartner: " + Globals.partners[i].getName() + "\nPhone: "
                                             + Globals.partners[i].getPhone_number() + "\nEmail: " + Globals.partners[i].getEmail() + "\n------\n";
                                 }
 

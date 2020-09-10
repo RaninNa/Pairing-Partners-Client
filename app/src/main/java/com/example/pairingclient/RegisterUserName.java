@@ -37,6 +37,16 @@ public class RegisterUserName extends AppCompatActivity {
                         try {
                             JSONObject jsonResponse = new JSONObject(response);
                             boolean success = jsonResponse.getBoolean("success");
+                            boolean taken = jsonResponse.getBoolean("taken");
+                            if(taken)
+                            {
+                                AlertDialog.Builder builder = new AlertDialog.Builder(RegisterUserName.this);
+                                builder.setMessage("Username already used")
+                                        .setNegativeButton("Retry", null)
+                                        .create()
+                                        .show();
+                                return;
+                            }
                             String id = jsonResponse.getString("id");
                             if (success) {
                                 Toast.makeText(getApplicationContext(), "שליחה התבצעה", Toast.LENGTH_LONG).show();

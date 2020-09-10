@@ -2,13 +2,17 @@ package com.example.pairingclient;
 
 public class Partner {
     String name;
+    String faculty;
     String course;
+    String workType;
     String email;
     String phone_number;
 
-    public Partner(String name, String course, String email, String phone_number) {
+    public Partner(String name, String faculty, String course, String workType, String email, String phone_number) {
         this.name = name;
+        this.faculty = faculty;
         this.course = course;
+        this.workType = workType;
         this.email = email;
         this.phone_number = phone_number;
     }
@@ -43,5 +47,21 @@ public class Partner {
 
     public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
+    }
+
+    public String getFaculty() {
+        return faculty;
+    }
+
+    public void setFaculty(String faculty) {
+        this.faculty = faculty;
+    }
+
+    public String getWorkType() {
+        return workType;
+    }
+
+    public void setWorkType(String workType) {
+        this.workType = workType;
     }
 }
