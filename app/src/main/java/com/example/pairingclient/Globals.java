@@ -9,4 +9,6 @@ public class Globals {
     public static String global_user_name;
     public static Partner[] partners;
     public static LatLng Location;
+    public static ListItem itemDetails;
+    public static int typePair;
 }
