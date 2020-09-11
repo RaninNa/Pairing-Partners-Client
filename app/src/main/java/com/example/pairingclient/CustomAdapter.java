@@ -340,13 +340,18 @@ public class CustomAdapter extends BaseAdapter {
                                         holder.buttonViewDontAgree.setVisibility(View.INVISIBLE);
 
                                         if (listItem.getAgreed1() == -1) {
-                                            holder.textViewAgreementStatus.setText("שותף שלך לא הסכים");
+                                            holder.textViewAgreementStatus.setText("שותפ/ה שלך לא הסכים/ה");
                                             holder.buttonViewDontAgree.setVisibility(View.INVISIBLE);
                                             holder.buttonViewAgree.setVisibility(View.INVISIBLE);
                                         } else if (listItem.getAgreed1() == 1) {
-                                            holder.textViewAgreementStatus.setText("שותף שלך מסכים");
+                                            holder.textViewAgreementStatus.setText("שותפ/ה שלך מסכים/ה");
                                             if (listItem.getAgreed2() == 1) {
                                                 holder.textViewAgreementStatus.setText("אתם שותפים");
+                                                holder.buttonViewDontAgree.setVisibility(View.INVISIBLE);
+                                                holder.buttonViewAgree.setVisibility(View.INVISIBLE);
+                                                holder.buttonViewFullInfo.setVisibility(View.VISIBLE);
+                                            } else if (listItem.getAgreed2() == -1) {
+                                                holder.textViewAgreementStatus.setText("את/ה לא הסכמת");
                                             }
                                         } else if (listItem.getAgreed1() == 0) {
                                             holder.textViewAgreementStatus.setText("");
@@ -354,9 +359,10 @@ public class CustomAdapter extends BaseAdapter {
                                                 holder.textViewAgreementStatus.setText("ממתין להסכמה");
                                                 holder.buttonViewDontAgree.setVisibility(View.INVISIBLE);
                                                 holder.buttonViewAgree.setVisibility(View.INVISIBLE);
+                                            } else if (listItem.getAgreed2() == -1) {
+                                                holder.textViewAgreementStatus.setText("את/ה לא הסכמת");
                                             }
                                         }
-
                                         //Intent intent = new Intent();
                                         //getActivity().startActivity(intent);
                                         //Intent intent = new Intent(AuthenticateUser.this, RegisterEventActivity.class);
@@ -406,13 +412,18 @@ public class CustomAdapter extends BaseAdapter {
                                         holder.buttonViewDontAgree.setVisibility(View.INVISIBLE);
 
                                         if (listItem.getAgreed1() == -1) {
-                                            holder.textViewAgreementStatus.setText("שותף שלך לא הסכים");
+                                            holder.textViewAgreementStatus.setText("שותפ/ה שלך לא הסכים/ה");
                                             holder.buttonViewDontAgree.setVisibility(View.INVISIBLE);
                                             holder.buttonViewAgree.setVisibility(View.INVISIBLE);
                                         } else if (listItem.getAgreed1() == 1) {
-                                            holder.textViewAgreementStatus.setText("שותף שלך מסכים");
+                                            holder.textViewAgreementStatus.setText("שותפ/ה שלך מסכים/ה");
                                             if (listItem.getAgreed2() == 1) {
                                                 holder.textViewAgreementStatus.setText("אתם שותפים");
+                                                holder.buttonViewDontAgree.setVisibility(View.INVISIBLE);
+                                                holder.buttonViewAgree.setVisibility(View.INVISIBLE);
+                                                holder.buttonViewFullInfo.setVisibility(View.VISIBLE);
+                                            } else if (listItem.getAgreed2() == -1) {
+                                                holder.textViewAgreementStatus.setText("את/ה לא הסכמת");
                                             }
                                         } else if (listItem.getAgreed1() == 0) {
                                             holder.textViewAgreementStatus.setText("");
@@ -420,9 +431,10 @@ public class CustomAdapter extends BaseAdapter {
                                                 holder.textViewAgreementStatus.setText("ממתין להסכמה");
                                                 holder.buttonViewDontAgree.setVisibility(View.INVISIBLE);
                                                 holder.buttonViewAgree.setVisibility(View.INVISIBLE);
+                                            } else if (listItem.getAgreed2() == -1) {
+                                                holder.textViewAgreementStatus.setText("את/ה לא הסכמת");
                                             }
                                         }
-
                                         //Intent intent = new Intent();
                                         //getActivity().startActivity(intent);
                                         //Intent intent = new Intent(AuthenticateUser.this, RegisterEventActivity.class);
