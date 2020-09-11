@@ -239,7 +239,7 @@ public class CustomAdapter extends BaseAdapter {
                                         Toast.makeText(context, "הסכמה התבצעה", Toast.LENGTH_LONG).show();
                                         holder.buttonViewAgree.setVisibility(View.INVISIBLE);
                                         holder.buttonViewDontAgree.setVisibility(View.INVISIBLE);
-                                        listItem.setAgreed2(1);
+                                        listItem.setAgreed1(-1);
                                         if (listItem.getAgreed1() == -1) {
                                             holder.textViewAgreementStatus.setText("שותפ/ה שלך לא הסכים/ה");
                                             holder.buttonViewDontAgree.setVisibility(View.INVISIBLE);
@@ -338,7 +338,7 @@ public class CustomAdapter extends BaseAdapter {
                                         Toast.makeText(context, "הסכמה התבצעה", Toast.LENGTH_LONG).show();
                                         holder.buttonViewAgree.setVisibility(View.INVISIBLE);
                                         holder.buttonViewDontAgree.setVisibility(View.INVISIBLE);
-
+                                        listItem.setAgreed2(1);
                                         if (listItem.getAgreed1() == -1) {
                                             holder.textViewAgreementStatus.setText("שותפ/ה שלך לא הסכים/ה");
                                             holder.buttonViewDontAgree.setVisibility(View.INVISIBLE);
@@ -410,7 +410,7 @@ public class CustomAdapter extends BaseAdapter {
                                         Toast.makeText(context, "הסכמה התבצעה", Toast.LENGTH_LONG).show();
                                         holder.buttonViewAgree.setVisibility(View.INVISIBLE);
                                         holder.buttonViewDontAgree.setVisibility(View.INVISIBLE);
-
+                                        listItem.setAgreed2(-1);
                                         if (listItem.getAgreed1() == -1) {
                                             holder.textViewAgreementStatus.setText("שותפ/ה שלך לא הסכים/ה");
                                             holder.buttonViewDontAgree.setVisibility(View.INVISIBLE);
