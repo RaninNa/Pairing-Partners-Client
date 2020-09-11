@@ -163,7 +163,7 @@ public class CustomAdapter extends BaseAdapter {
                                 try {
                                     JSONObject jsonResponse = new JSONObject(response);
                                     boolean success = jsonResponse.getBoolean("success");
-                                    //String id = jsonResponse.getString("id");
+
                                     if (success) {
                                         Toast.makeText(context, "הסכמה התבצעה", Toast.LENGTH_LONG).show();
                                         holder.buttonViewAgree.setVisibility(View.INVISIBLE);
@@ -234,7 +234,6 @@ public class CustomAdapter extends BaseAdapter {
                                 try {
                                     JSONObject jsonResponse = new JSONObject(response);
                                     boolean success = jsonResponse.getBoolean("success");
-                                    //String id = jsonResponse.getString("id");
                                     if (success) {
                                         Toast.makeText(context, "הסכמה התבצעה", Toast.LENGTH_LONG).show();
                                         holder.buttonViewAgree.setVisibility(View.INVISIBLE);
@@ -333,7 +332,6 @@ public class CustomAdapter extends BaseAdapter {
                                 try {
                                     JSONObject jsonResponse = new JSONObject(response);
                                     boolean success = jsonResponse.getBoolean("success");
-                                    String id = jsonResponse.getString("id");
                                     if (success) {
                                         Toast.makeText(context, "הסכמה התבצעה", Toast.LENGTH_LONG).show();
                                         holder.buttonViewAgree.setVisibility(View.INVISIBLE);
@@ -405,7 +403,6 @@ public class CustomAdapter extends BaseAdapter {
                                 try {
                                     JSONObject jsonResponse = new JSONObject(response);
                                     boolean success = jsonResponse.getBoolean("success");
-                                    String id = jsonResponse.getString("id");
                                     if (success) {
                                         Toast.makeText(context, "הסכמה התבצעה", Toast.LENGTH_LONG).show();
                                         holder.buttonViewAgree.setVisibility(View.INVISIBLE);
