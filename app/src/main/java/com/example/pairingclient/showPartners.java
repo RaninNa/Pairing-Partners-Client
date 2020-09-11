@@ -84,7 +84,7 @@ public class showPartners extends AppCompatActivity {
                                 for (int c = 0; c < Globals.partners.length; c++) {
                                     Partner partner = Globals.partners[c];
                                     if (partner != null) {
-                                        ListItem listItem = new ListItem(partner.getId(), partner.getUsername(), partner.getName(), partner.getEmail(), partner.getPhone(), partner.getAgreed1(), partner.getFaculty(), partner.getCourse(), partner.getWorkType(), partner.getPair_UN(), partner.getPairName(), partner.getEmail(), partner.getPairPhone(), partner.getAgreed2(), getApplicationContext());
+                                        ListItem listItem = new ListItem(partner.getId(), partner.getUsername(), partner.getName(), partner.getEmail(), partner.getPhone(), partner.getAgreed1(), partner.getFaculty(), partner.getCourse(), partner.getWorkType(), partner.getPair_UN(), partner.getPairName(), partner.getPairEmail(), partner.getPairPhone(), partner.getAgreed2(), getApplicationContext());
                                         listItems.add(listItem);
 
                                     }

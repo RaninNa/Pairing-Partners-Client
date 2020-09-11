@@ -290,7 +290,7 @@ public class RegisterInfoActivity extends AppCompatActivity {
                 String workHours = "";// = spinnerWorkingTime.getSelectedItem().toString();
                 for (int c = 1; c < 4; c++) {
                     if (((ItemSpinner) (spinnerWorkingTime.getItemAtPosition(c))).isSelected()) {
-                        workHours += ((ItemSpinner) (spinnerWorkingTime.getItemAtPosition(c))).isSelected() + "@";
+                        workHours += ((ItemSpinner) (spinnerWorkingTime.getItemAtPosition(c))).getTitle() + "@";
                     }
                 }
                 if (workHours.equals("")) {
@@ -303,7 +303,7 @@ public class RegisterInfoActivity extends AppCompatActivity {
                 String workdays = "";// = spinnerWorkingTime.getSelectedItem().toString();
                 for (int c = 1; c < 8; c++) {
                     if (((ItemSpinner) (spinnerWorkingDays.getItemAtPosition(c))).isSelected()) {
-                        workdays += ((ItemSpinner) (spinnerWorkingDays.getItemAtPosition(c))).isSelected() + "@";
+                        workdays += ((ItemSpinner) (spinnerWorkingDays.getItemAtPosition(c))).getTitle() + "@";
                     }
                 }
                 if (workdays.equals("")) {

@@ -24,6 +24,7 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version"/>
         <activity android:name=".showPartners"></activity>
+        <activity android:name=".showPartner"></activity>
         <activity android:name=".Menu" />
         <activity android:name=".RegisterUserName" />
         <activity android:name=".ActivityLocation" >
