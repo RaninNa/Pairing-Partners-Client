@@ -4,19 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/color_gradient"
     tools:context=".showPartners">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/partnersText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/CardViewLogIn"
+            android:layout_width="332.5dp"
+            android:layout_height="380dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="100dp"
-            android:textSize="14dp" />
+            android:layout_marginTop="75dp"
+            app:cardBackgroundColor="@color/White"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="7dp">
+
+
+            <ImageView
+                android:id="@+id/imageViewLogo"
+                android:layout_width="173.1dp"
+                android:layout_height="71.4dp"
+                android:layout_gravity="center|top"
+                android:layout_marginTop="45dp"
+                android:background="@drawable/findpairlogo" />
+
+            <TextView
+                android:id="@+id/partnersText"
+                android:fontFamily="@font/newfont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="40dp"
+                android:textColor="@color/BorderColor"
+                android:textSize="27dp" />
+
+
+        </androidx.cardview.widget.CardView>
+
+        <RelativeLayout
+            android:id="@+id/RLCardView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="210dp"
+            android:background="@color/White"></RelativeLayout>
+
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

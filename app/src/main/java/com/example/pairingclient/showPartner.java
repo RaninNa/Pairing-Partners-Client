@@ -24,13 +24,13 @@ public class showPartner extends AppCompatActivity {
         String partners_string = "";
         if(Globals.typePair == 0)
         {
-            partners_string += "Course: " + Globals.itemDetails.getCourse() + "\nTask: " + Globals.itemDetails.getWorktype() + "\nPartner: " + Globals.itemDetails.getPairName() + "\nPhone: "
-                    + Globals.itemDetails.getPhoneOfPair() + "\nEmail: " + Globals.itemDetails.getEmailOfPair() + "\n------\n";
+            partners_string += "קורס: " + Globals.itemDetails.getCourse() + "\nמטלה: " + Globals.itemDetails.getWorktype() + "\nשותף/ה: " + Globals.itemDetails.getPairName() + "\nמס טלפון: "
+                    + Globals.itemDetails.getPhoneOfPair() + "\nאימייל: " + Globals.itemDetails.getEmailOfPair() + "\n------\n";
         }
         else
         {
-            partners_string += "Course: " + Globals.itemDetails.getCourse() + "\nTask: " + Globals.itemDetails.getWorktype() + "\nPartner: " + Globals.itemDetails.getName() + "\nPhone: "
-                    + Globals.itemDetails.getPhone() + "\nEmail: " + Globals.itemDetails.getEmail() + "\n------\n";
+            partners_string += "קורס: " + Globals.itemDetails.getCourse() + "\nמטלה: " + Globals.itemDetails.getWorktype() + "\nשותף/ה: " + Globals.itemDetails.getName() + "\nמס טלפון: "
+                    + Globals.itemDetails.getPhone() + "\nאימייל: " + Globals.itemDetails.getEmail() + "\n------\n";
         }
         partnersText.setText(partners_string);
 

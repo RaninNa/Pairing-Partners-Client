@@ -1,264 +1,329 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ScrollView"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:scrollbars="none" >
+    android:id="@+id/RLRegisterINFO"
+    android:background="@drawable/color_gradient"
+    tools:context=".Menu">
 
-    <LinearLayout android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <RelativeLayout
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CardViewRegister"
+        android:layout_width="332.5dp"
+        android:layout_height="600dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp"
+        app:cardBackgroundColor="@color/White"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="7dp">
+
+        <ScrollView
+            android:id="@+id/ScrollView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollbars="none">
 
-            <EditText
-                android:id="@+id/editTextTextPersonName"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="100dp"
-                android:background="@drawable/drawable_edittext"
-                android:textColorHint="@color/hintColor"
-                android:textColor="@color/EasyBlue"
-                android:paddingRight="10dp"
-                android:ems="10"
-                android:hint="שם פרטי"
-                android:inputType="textPersonName" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <Spinner
-                android:id="@+id/spinnerGender"
-                android:layout_width="240dp"
-                android:layout_height="50dp"
-                android:layout_below="@id/editTextTextPersonName"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:textColor="@color/EasyBlue"
-                android:gravity="center"
-                android:paddingBottom="10dp"
-                android:textAlignment="center"
-                android:textSize="20dp" />
+                <RelativeLayout
+                    android:id="@+id/RLRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
+                    <Button
+                        android:id="@+id/btnPickLocation"
+                        android:layout_width="257dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="870dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/drawable_button"
+                        android:fontFamily="@font/newfont"
+                        android:text="בחר מקום"
+                        android:textColor="@color/White"
+                        android:textSize="29dp" />
 
-            <Button
-                android:id="@+id/btnPickLocation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/spinnerGender"
-                android:layout_marginTop="40dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="20dp"
-                android:textColor="@color/EasyBlue"
-                android:text="בחר מקום" />
+                    <Button
+                        android:id="@+id/btnRegister"
+                        android:layout_width="257dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="1050dp"
+                        android:layout_marginBottom="60dp"
+                        android:background="@drawable/drawable_button"
+                        android:fontFamily="@font/newfont"
+                        android:text="שלח"
+                        android:textColor="@color/White"
+                        android:textSize="29dp" />
 
 
-
-            <EditText
-                android:id="@+id/editTextTextAge"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_below="@+id/btnPickLocation"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/drawable_edittext"
-                android:textColorHint="@color/hintColor"
-                android:textColor="@color/EasyBlue"
-                android:paddingRight="10dp"
-                android:ems="10"
-                android:hint="גיל"
-                android:inputType="number" />
-
-            <EditText
-                android:id="@+id/editTextTextPhone"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_below="@+id/editTextTextAge"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/drawable_edittext"
-                android:textColorHint="@color/hintColor"
-                android:textColor="@color/EasyBlue"
-                android:paddingRight="10dp"
-                android:ems="10"
-                android:hint="מספר טלפון"
-                android:inputType="phone" />
-
-            <EditText
-                android:id="@+id/editTextTextEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_below="@+id/editTextTextPhone"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/drawable_edittext"
-                android:textColorHint="@color/hintColor"
-                android:textColor="@color/EasyBlue"
-                android:paddingRight="10dp"
-                android:ems="10"
-                android:hint="אימייל"
-                android:inputType="textPersonName" />
+                    <CheckBox
+                        android:id="@+id/checkBoxLocation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="1000dp"
+                        android:layout_marginRight="50dp"
+                        android:buttonTint="@color/BorderColor"
+                        android:fontFamily="@font/newfont"
+                        android:text="מקום"
+                        android:textColor="@color/BorderColor"
+                        android:textSize="24dp" />
 
 
-
-            <EditText
-                android:id="@+id/editTextTextGPA"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_below="@+id/editTextTextEmail"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/drawable_edittext"
-                android:textColorHint="@color/hintColor"
-                android:textColor="@color/EasyBlue"
-                android:paddingRight="10dp"
-                android:ems="10"
-                android:hint="ציון ממוצע"
-                android:inputType="numberDecimal" />
-
-            <Spinner
-                android:id="@+id/spinnerStudYear"
-                android:layout_width="240dp"
-                android:layout_height="50dp"
-                android:layout_below="@id/editTextTextGPA"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:textColor="@color/EasyBlue"
-                android:gravity="center"
-                android:paddingBottom="10dp"
-                android:textAlignment="center"
-                android:textSize="20dp" />
+                    <CheckBox
+                        android:id="@+id/checkBoxGrade"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="1000dp"
+                        android:layout_marginRight="150dp"
+                        android:buttonTint="@color/BorderColor"
+                        android:fontFamily="@font/newfont"
+                        android:text="ציון"
+                        android:textColor="@color/BorderColor"
+                        android:textSize="24dp" />
 
 
-
-            <Spinner
-                android:id="@+id/spinnerWorkingWay"
-                android:layout_width="300dp"
-                android:layout_height="50dp"
-                android:layout_below="@+id/spinnerStudYear"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:layout_marginTop="100dp"
-                android:gravity="center"
-                android:paddingBottom="10dp"
-                android:textColor="@color/EasyBlue"
-                android:textAlignment="center"
-                android:textSize="20dp" />
-
-            <Spinner
-                android:id="@+id/spinnerMeetings"
-                android:layout_width="300dp"
-                android:layout_height="50dp"
-                android:layout_below="@+id/spinnerWorkingWay"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:paddingBottom="10dp"
-                android:textColor="@color/EasyBlue"
-                android:textAlignment="center"
-                android:textSize="20dp" />
-
-            <Spinner
-                android:id="@+id/spinnerPreferredGender"
-                android:layout_width="300dp"
-                android:layout_height="50dp"
-                android:layout_below="@+id/spinnerMeetings"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:paddingBottom="10dp"
-                android:textColor="@color/EasyBlue"
-                android:textAlignment="center"
-                android:textSize="20dp" />
-
-            <Spinner
-                android:id="@+id/spinnerWorkingDays"
-                android:layout_width="300dp"
-                android:layout_height="50dp"
-                android:layout_below="@+id/spinnerPreferredGender"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:paddingBottom="10dp"
-                android:textColor="@color/EasyBlue"
-                android:textAlignment="center"
-                android:textSize="20dp" />
-
-            <Spinner
-                android:id="@+id/spinnerWorkingTime"
-                android:layout_width="300dp"
-                android:layout_height="50dp"
-                android:layout_below="@+id/spinnerWorkingDays"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:paddingBottom="10dp"
-                android:textColor="@color/EasyBlue"
-                android:textAlignment="center"
-                android:textSize="20dp" />
+                    <EditText
+                        android:id="@+id/editTextTextPersonName"
+                        android:layout_width="257dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/drawable_edittext"
+                        android:ems="10"
+                        android:fontFamily="@font/newfont"
+                        android:hint="שם פרטי"
+                        android:inputType="textPersonName"
+                        android:paddingRight="15dp"
+                        android:textColor="@color/BorderColor"
+                        android:textColorHint="@color/hintColor"
+                        android:textSize="29dp" />
 
 
-
-            <TextView
-                android:id="@+id/textViewNote"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/spinnerWorkingTime"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="100dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginRight="90dp"
-                android:textColor="@color/EasyBlue"
-                android:text="סמן את הקריטריונים החשובים"
-                android:textSize="24sp" />
-
-            <CheckBox
-                android:id="@+id/checkBoxLocation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textViewNote"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="100dp"
-                android:layout_marginRight="100dp"
-                android:textColor="@color/EasyBlue"
-                android:text="מקום" />
-
-            <CheckBox
-                android:id="@+id/checkBoxGrade"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textViewNote"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="60dp"
-                android:layout_marginRight="60dp"
-                android:layout_toStartOf="@+id/checkBoxLocation"
-                android:layout_toLeftOf="@+id/checkBoxLocation"
-                android:textColor="@color/EasyBlue"
-                android:text="ציון" />
+                    <EditText
+                        android:id="@+id/editTextTextAge"
+                        android:layout_width="257dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="170dp"
+                        android:background="@drawable/drawable_edittext"
+                        android:ems="10"
+                        android:fontFamily="@font/newfont"
+                        android:hint="גיל"
+                        android:inputType="number"
+                        android:paddingRight="15dp"
+                        android:textColor="@color/BorderColor"
+                        android:textColorHint="@color/hintColor"
+                        android:textSize="29dp" />
 
 
-            <Button
-                android:id="@+id/btnRegister"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/checkBoxGrade"
-                android:layout_marginTop="40dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="60dp"
-                android:textColor="@color/EasyBlue"
-                android:text="שלח" />
+                    <EditText
+                        android:id="@+id/editTextTextPhone"
+                        android:layout_width="257dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="240dp"
+                        android:background="@drawable/drawable_edittext"
+                        android:ems="10"
+                        android:fontFamily="@font/newfont"
+                        android:gravity="right"
+                        android:hint="מספר טלפון"
+                        android:inputType="phone"
+                        android:paddingRight="15dp"
+                        android:textColor="@color/BorderColor"
+                        android:textColorHint="@color/hintColor"
+                        android:textSize="29dp" />
 
 
-        </RelativeLayout>
-    </LinearLayout>
-</ScrollView>
+                    <EditText
+                        android:id="@+id/editTextTextEmail"
+                        android:layout_width="257dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="310dp"
+                        android:background="@drawable/drawable_edittext"
+                        android:ems="10"
+                        android:fontFamily="@font/newfont"
+                        android:hint="אימייל"
+                        android:inputType="textPersonName"
+                        android:paddingRight="15dp"
+                        android:textColor="@color/BorderColor"
+                        android:textColorHint="@color/hintColor"
+                        android:textSize="29dp" />
+
+                    <EditText
+                        android:id="@+id/editTextTextGPA"
+                        android:layout_width="257dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="380dp"
+                        android:background="@drawable/drawable_edittext"
+                        android:ems="10"
+                        android:fontFamily="@font/newfont"
+                        android:hint="ציון ממוצע"
+                        android:inputType="numberDecimal"
+                        android:paddingRight="15dp"
+                        android:textColor="@color/BorderColor"
+                        android:textColorHint="@color/hintColor"
+                        android:textSize="29dp" />
+
+
+                    <Spinner
+                        android:id="@+id/spinnerGender"
+                        android:layout_width="257dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="100dp"
+                        android:background="@drawable/drawable_edittext"
+                        android:gravity="center"
+                        android:paddingBottom="10dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/BorderColor"
+                        android:textSize="29dp" />
+
+                    <Spinner
+                        android:id="@+id/spinnerStudYear"
+                        android:layout_width="257dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="450dp"
+                        android:background="@drawable/drawable_edittext"
+                        android:gravity="center"
+                        android:paddingBottom="10dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/EasyBlue"
+                        android:textSize="24dp" />
+
+
+                    <Spinner
+                        android:id="@+id/spinnerWorkingWay"
+                        android:layout_width="257dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="520dp"
+                        android:background="@drawable/drawable_edittext"
+                        android:fontFamily="@font/newfont"
+                        android:gravity="center"
+                        android:paddingBottom="10dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/BorderColor"
+                        android:textSize="24dp" />
+
+
+                    <Spinner
+                        android:id="@+id/spinnerMeetings"
+                        android:layout_width="257dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="590dp"
+                        android:background="@drawable/drawable_edittext"
+                        android:fontFamily="@font/newfont"
+                        android:gravity="center"
+                        android:paddingBottom="10dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/BorderColor"
+                        android:textSize="24dp" />
+
+
+                    <Spinner
+                        android:id="@+id/spinnerPreferredGender"
+                        android:layout_width="257dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="660dp"
+                        android:background="@drawable/drawable_edittext"
+                        android:fontFamily="@font/newfont"
+                        android:gravity="center"
+                        android:paddingBottom="10dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/BorderColor"
+                        android:textSize="24dp" />
+
+
+                    <Spinner
+                        android:id="@+id/spinnerWorkingDays"
+                        android:layout_width="257dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="730dp"
+                        android:background="@drawable/drawable_edittext"
+                        android:gravity="center"
+                        android:paddingBottom="10dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/BorderColor"
+                        android:textSize="20dp" />
+
+
+                    <Spinner
+                        android:id="@+id/spinnerWorkingTime"
+                        android:layout_width="257dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="800dp"
+                        android:background="@drawable/drawable_edittext"
+                        android:gravity="center"
+                        android:paddingBottom="10dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/BorderColor"
+                        android:textSize="20dp" />
+
+
+                    <TextView
+                        android:id="@+id/TVONworkingDaysDesign"
+                        android:layout_width="257dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="730dp"
+                        android:background="@drawable/drawable_edittext"
+                        android:fontFamily="@font/newfont"
+                        android:textAlignment="gravity"
+                        android:textColor="@color/BorderColor"
+                        android:textSize="24dp" />
+
+
+                    <TextView
+                        android:id="@+id/TVONworkingTimeDesign"
+                        android:layout_width="257dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="800dp"
+                        android:background="@drawable/drawable_edittext"
+                        android:fontFamily="@font/newfont"
+                        android:textAlignment="gravity"
+                        android:textColor="@color/BorderColor"
+                        android:textSize="24dp" />
+
+
+                    <TextView
+                        android:id="@+id/textViewNote"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="950dp"
+                        android:layout_marginRight="20dp"
+                        android:fontFamily="@font/newfont"
+                        android:text="סמן את הקריטריונים החשובים"
+                        android:textColor="@color/BorderColor"
+                        android:textSize="24dp" />
+
+
+                </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

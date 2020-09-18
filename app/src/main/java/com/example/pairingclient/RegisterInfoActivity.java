@@ -5,12 +5,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -25,13 +30,14 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 public class RegisterInfoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_info);
-
+        FixLayoutAspects();
         final EditText ETname = (EditText) findViewById(R.id.editTextTextPersonName);
         final EditText ETage = (EditText) findViewById(R.id.editTextTextAge);
         final EditText ETphone = (EditText) findViewById(R.id.editTextTextPhone);
@@ -45,7 +51,8 @@ public class RegisterInfoActivity extends AppCompatActivity {
 
         final Spinner spinnerGender = (Spinner) findViewById(R.id.spinnerGender);
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,
-                R.array.gender_array, android.R.layout.simple_spinner_item);
+                R.array.gender_array, R.layout.spinner_item);
+        adapter1.setDropDownViewResource(R.layout.spinner_item_blue);
         spinnerGender.setAdapter(adapter1);
         spinnerGender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -80,7 +87,8 @@ public class RegisterInfoActivity extends AppCompatActivity {
         */
         final Spinner spinnerWorkingWay = (Spinner) findViewById(R.id.spinnerWorkingWay);
         ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this,
-                R.array.working_way_array, android.R.layout.simple_spinner_item);
+                R.array.working_way_array, R.layout.spinner_item);
+        adapter3.setDropDownViewResource(R.layout.spinner_item_blue);
         spinnerWorkingWay.setAdapter(adapter3);
         spinnerWorkingWay.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -97,7 +105,8 @@ public class RegisterInfoActivity extends AppCompatActivity {
 
         final Spinner spinnerMeetings = (Spinner) findViewById(R.id.spinnerMeetings);
         ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource(this,
-                R.array.meetings_array, android.R.layout.simple_spinner_item);
+                R.array.meetings_array, R.layout.spinner_item);
+        adapter4.setDropDownViewResource(R.layout.spinner_item_blue);
         spinnerMeetings.setAdapter(adapter4);
         spinnerMeetings.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -114,7 +123,8 @@ public class RegisterInfoActivity extends AppCompatActivity {
 
         final Spinner spinnerPreferredGender = (Spinner) findViewById(R.id.spinnerPreferredGender);
         ArrayAdapter<CharSequence> adapter5 = ArrayAdapter.createFromResource(this,
-                R.array.preffered_gender_array, android.R.layout.simple_spinner_item);
+                R.array.preffered_gender_array, R.layout.spinner_item);
+        adapter5.setDropDownViewResource(R.layout.spinner_item_blue);
         spinnerPreferredGender.setAdapter(adapter5);
         spinnerPreferredGender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -187,7 +197,8 @@ public class RegisterInfoActivity extends AppCompatActivity {
 
 
         ArrayAdapter<CharSequence> adapter7 = ArrayAdapter.createFromResource(this,
-                R.array.study_year_array, android.R.layout.simple_spinner_item);
+                R.array.study_year_array, R.layout.spinner_item);
+        adapter7.setDropDownViewResource(R.layout.spinner_item_blue);
         spinnerStudyYear.setAdapter(adapter7);
         spinnerStudyYear.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -330,4 +341,167 @@ public class RegisterInfoActivity extends AppCompatActivity {
         });
     }
 
+    void FixLayoutAspects()
+    {
+
+        RelativeLayout rl = (RelativeLayout) findViewById(R.id.RLRegisterINFO);
+        int childCount = rl.getChildCount();
+
+        ViewGroup.LayoutParams LPR = (ViewGroup.LayoutParams) rl.getLayoutParams();
+
+
+        if(LPR.width>0)
+            LPR.width = (int) (LPR.width * Globals.scaleDP);
+        if(LPR.height>0)
+            LPR.height = (int) (LPR.height * Globals.scaleDP);
+        if(Globals.Ratio >17f / 9f ) {
+            LPR.height = (int) (LPR.height * 1.3f);
+        }
+        rl.setLayoutParams(LPR);
+        for (int i = 0; i < childCount; i++) {
+            View view = rl.getChildAt(i);
+            //RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams((int) (view.getLayoutParams().width * Globals.scaleDP),
+            //        (int) (view.getLayoutParams().height * Globals.scaleDP));
+            RelativeLayout.LayoutParams LP = (RelativeLayout.LayoutParams) view.getLayoutParams();
+            //layoutParams.setMargins((int) (LP.leftMargin * Globals.scaleDP), (int) (LP.topMargin * Globals.scaleDP),
+            //        (int) (LP.rightMargin * Globals.scaleDP), (int) (LP.bottomMargin * Globals.scaleDP));
+            RelativeLayout.LayoutParams NewLP = new RelativeLayout.LayoutParams(LP);
+            int[] rules = LP.getRules();
+            for (int verb = 0; verb < rules.length; verb++) {
+                int subject = rules[verb];
+                NewLP.addRule(verb, subject);
+            }
+            NewLP.setMargins((int) (LP.leftMargin * Globals.scaleDP), (int) (LP.topMargin * Globals.scaleDP),
+                    (int) (LP.rightMargin * Globals.scaleDP), (int) (LP.bottomMargin * Globals.scaleDP));
+            if (NewLP.height > 0 )
+                NewLP.height = (int) (LP.height * Globals.scaleDP);
+            if(NewLP.width > 0)
+                NewLP.width = (int) (LP.width * Globals.scaleDP);
+
+            if (view instanceof Button) {
+                Button button = (Button) view;
+                float size = button.getTextSize();
+                button.setTextSize((button.getTextSize() * Globals.scaleDP * Globals.scaleS) / Globals.DP);
+            }
+            else if (view instanceof TextView) {
+                TextView textView = (TextView) view;
+                float size = textView.getTextSize();
+                textView.setTextSize((textView.getTextSize() * Globals.scaleDP * Globals.scaleS) / Globals.DP);
+            }  else if (view instanceof EditText) {
+                EditText editText = (EditText) view;
+                float size = editText.getTextSize();
+                editText.setTextSize((editText.getTextSize() * Globals.scaleDP * Globals.scaleS) / Globals.DP);
+            } else if (view instanceof ImageView) {
+                ImageView imageView = (ImageView) view;
+                float height = imageView.getHeight();
+                float width = imageView.getWidth();
+                //view.setLayoutParams(NewLP);
+
+                //imageView.setTextSize((imageView.getTextSize() * Globals.scaleDP)/ Globals.DP);
+            } else if (view instanceof Spinner) {
+                Spinner spinner = (Spinner) view;
+                if(Globals.ActualWidth / (float)(Globals.ActualHeight) > 9.0f /16.0f)
+                    NewLP.topMargin = (int)(((NewLP.topMargin / Globals.DP)-15)*Globals.DP) ;
+                //view.setLayoutParams(NewLP);
+            }
+            else if (view instanceof CardView)
+            {
+                if(Globals.Ratio >17f / 9f ) {
+                    NewLP.height = (int) (NewLP.height * 1.1f);
+                }
+            }
+            view.setLayoutParams(NewLP);
+
+            //view.setX(location[0]);
+            //view.setY(location[1]);
+
+            // Do something with v.
+            // …
+
+
+        }
+
+
+
+         rl = (RelativeLayout) findViewById(R.id.RLRegister);
+        childCount = rl.getChildCount();
+
+        LPR = (ViewGroup.LayoutParams) rl.getLayoutParams();
+
+
+        if(LPR.width>0)
+            LPR.width = (int) (LPR.width * Globals.scaleDP);
+        if(LPR.height>0)
+            LPR.height = (int) (LPR.height * Globals.scaleDP);
+        if(Globals.Ratio >17f / 9f ) {
+            LPR.height = (int) (LPR.height * 1.3f);
+        }
+        rl.setLayoutParams(LPR);
+        for (int i = 0; i < childCount; i++) {
+            View view = rl.getChildAt(i);
+            //RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams((int) (view.getLayoutParams().width * Globals.scaleDP),
+            //        (int) (view.getLayoutParams().height * Globals.scaleDP));
+            RelativeLayout.LayoutParams LP = (RelativeLayout.LayoutParams) view.getLayoutParams();
+            //layoutParams.setMargins((int) (LP.leftMargin * Globals.scaleDP), (int) (LP.topMargin * Globals.scaleDP),
+            //        (int) (LP.rightMargin * Globals.scaleDP), (int) (LP.bottomMargin * Globals.scaleDP));
+            RelativeLayout.LayoutParams NewLP = new RelativeLayout.LayoutParams(LP);
+            int[] rules = LP.getRules();
+            for (int verb = 0; verb < rules.length; verb++) {
+                int subject = rules[verb];
+                NewLP.addRule(verb, subject);
+            }
+            NewLP.setMargins((int) (LP.leftMargin * Globals.scaleDP), (int) (LP.topMargin * Globals.scaleDP),
+                    (int) (LP.rightMargin * Globals.scaleDP), (int) (LP.bottomMargin * Globals.scaleDP));
+            if (NewLP.height > 0)
+                NewLP.height = (int) (LP.height * Globals.scaleDP);
+            if (NewLP.width > 0)
+                NewLP.width = (int) (LP.width * Globals.scaleDP);
+
+            if (view instanceof Button) {
+                Button button = (Button) view;
+                float size = button.getTextSize();
+                button.setTextSize((button.getTextSize() * Globals.scaleDP * Globals.scaleS) / Globals.DP);
+            } else if (view instanceof TextView) {
+                TextView textView = (TextView) view;
+                float size = textView.getTextSize();
+                textView.setTextSize((textView.getTextSize() * Globals.scaleDP * Globals.scaleS) / Globals.DP);
+            } else if (view instanceof EditText) {
+                EditText editText = (EditText) view;
+                float size = editText.getTextSize();
+                editText.setTextSize((editText.getTextSize() * Globals.scaleDP * Globals.scaleS) / Globals.DP);
+            } else if (view instanceof ImageView) {
+                ImageView imageView = (ImageView) view;
+                float height = imageView.getHeight();
+                float width = imageView.getWidth();
+                //view.setLayoutParams(NewLP);
+
+                //imageView.setTextSize((imageView.getTextSize() * Globals.scaleDP)/ Globals.DP);
+            } else if (view instanceof Spinner) {
+                Spinner spinner = (Spinner) view;
+                if (Globals.ActualWidth / (float) (Globals.ActualHeight) > 9.0f / 16.0f)
+                    NewLP.topMargin = (int) (((NewLP.topMargin / Globals.DP) - 15) * Globals.DP);
+                //view.setLayoutParams(NewLP);
+            } else if (view instanceof CardView)
+            {
+                if(Globals.Ratio >17f / 9f ) {
+                    NewLP.height = (int) (NewLP.height * 1.1f);
+                }
+            }
+
+            view.setLayoutParams(NewLP);
+
+            //view.setX(location[0]);
+            //view.setY(location[1]);
+
+            // Do something with v.
+            // …
+
+
+        }
+
+
+
+
+
+    }
 }
