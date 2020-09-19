@@ -1,5 +1,7 @@
 package com.example.pairingclient;
 
+import android.util.DisplayMetrics;
+
 import com.google.android.gms.maps.model.LatLng;
 
 public class Globals {
@@ -11,4 +13,17 @@ public class Globals {
     public static LatLng Location;
     public static ListItem itemDetails;
     public static int typePair;
+
+    //screen size parameters
+    public static int ScreenWidth = 0;
+    public static int ScreenHeight = 0;
+
+    public static int ActualWidth = 0;
+    public static int ActualHeight = 0;
+    public static DisplayMetrics metrics;
+    public static DisplayMetrics metrics2;
+    public static float scaleDP;
+    public static float scaleS= 1;
+    public static float DP;
+    public static float Ratio;
 }

@@ -7,11 +7,16 @@ import android.app.AlertDialog;
 import android.content.Context;
 
 import android.content.Intent;
+import android.graphics.Typeface;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +30,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.List;
+
+import androidx.annotation.RequiresApi;
+import androidx.cardview.widget.CardView;
+import androidx.core.content.res.ResourcesCompat;
 
 public class CustomAdapter extends BaseAdapter {
 
@@ -89,6 +98,7 @@ public class CustomAdapter extends BaseAdapter {
     }
 
 
+
     @Override
     public View getView(int i, View v, ViewGroup viewGroup) {
         //final ViewHolder holder =null;
@@ -104,6 +114,17 @@ public class CustomAdapter extends BaseAdapter {
             holder.buttonViewAgree = (Button) v.findViewById(R.id.btnAgreePair);
             holder.buttonViewDontAgree = (Button) v.findViewById(R.id.btnDontAgreePair);
             holder.buttonViewFullInfo = (Button) v.findViewById(R.id.btnPairFullInfo);
+            //final Typeface tvFont = Typeface.createFromAsset(context.getAssets(), "fonts/newfont.otf");
+            final Typeface tvFont = ResourcesCompat.getFont(context, R.font.newfont);
+            holder.textViewCourseInfo.setTypeface(tvFont);
+            holder.textViewTaskInfo.setTypeface(tvFont);
+            holder.textViewPairInfo.setTypeface(tvFont);
+            holder.textViewAgreementStatus.setTypeface(tvFont);
+            holder.buttonViewAgree.setTypeface(tvFont);
+            holder.buttonViewDontAgree.setTypeface(tvFont);
+            holder.buttonViewFullInfo.setTypeface(tvFont);
+
+
             holder.buttonViewFullInfo.setVisibility(View.INVISIBLE);
 
             final ListItem listItem = listItems.get(i);
@@ -464,6 +485,67 @@ public class CustomAdapter extends BaseAdapter {
                     }
                 });
             }
+
+
+
+
+
+/*
+            CardView cardView = v.findViewById(R.id.CardViewListItem);
+            ViewGroup.LayoutParams LPC = (ViewGroup.LayoutParams) cardView.getLayoutParams();
+            LPC.width = (int) (LPC.width * Globals.scaleDP);
+            LPC.height = (int) (LPC.height * Globals.scaleDP);
+            cardView.setLayoutParams(LPC);
+            final int childCount = cardView.getChildCount();
+            float Scale169=1f;
+            if(Globals.ActualWidth / Globals.ActualHeight > 9.0f /16.0f)
+                Scale169=0.95f;
+            for (int c = 0; c < childCount; c++) {
+                View view = cardView.getChildAt(c);
+
+                FrameLayout.LayoutParams LP = (FrameLayout.LayoutParams) view.getLayoutParams();
+                FrameLayout.LayoutParams NewLP = new FrameLayout.LayoutParams(LP);
+
+
+                NewLP.setMargins((int) (LP.leftMargin * Globals.scaleDP), (int) (LP.topMargin * Globals.scaleDP),
+                        (int) (LP.rightMargin * Globals.scaleDP), (int) (LP.bottomMargin * Globals.scaleDP));
+                if (NewLP.height > 0 && NewLP.width > 0) {
+                    NewLP.width = (int) (LP.width * Globals.scaleDP);
+                    NewLP.height = (int) (LP.height * Globals.scaleDP);
+                }
+                if (view instanceof Button) {
+                    Button button = (Button) view;
+                    float size = button.getTextSize();
+                    button.setTextSize((button.getTextSize() * Scale169 * Globals.scaleDP * Globals.scaleS) / Globals.DP);
+                } else if (view instanceof EditText) {
+                    EditText editText = (EditText) view;
+                    float size = editText.getTextSize();
+                    editText.setTextSize((editText.getTextSize() * Globals.scaleDP * Globals.scaleS) / Globals.DP);
+                } else if (view instanceof TextView) {
+                    TextView textView = (TextView) view;
+                    float size = textView.getTextSize();
+                    textView.setTextSize((textView.getTextSize() * Globals.scaleDP * Globals.scaleS) / Globals.DP);
+                } else if (view instanceof ImageView) {
+                    ImageView imageView = (ImageView) view;
+                    float height = imageView.getHeight();
+                    float width = imageView.getWidth();
+
+                }
+
+                view.setLayoutParams(NewLP);
+
+
+            }
+
+
+
+
+*/
+
+
+
+
+
 
 
         }

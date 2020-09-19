@@ -1,75 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="375dp"
+    android:layout_height="140dp">
 
 
-    <TextView
-        android:id="@+id/TVPairInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CardViewListItem"
+        android:layout_width="375dp"
+        android:layout_height="140dp"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="0dp"
+        app:cardBackgroundColor="@color/White"
+        app:cardCornerRadius="7dp"
+        app:cardElevation="0dp">
+
+        <Button
+            android:id="@+id/btnAgreePair"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="90dp"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/drawable_button"
+            android:fontFamily="@font/newfont"
+            android:text="מסכים"
+            android:textColor="@color/White"
+            android:textSize="20dp" />
 
 
-    <TextView
-        android:id="@+id/TVCourseInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
+        <Button
+            android:id="@+id/btnPairFullInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="90dp"
+            android:background="@drawable/drawable_button"
+            android:fontFamily="@font/newfont"
+            android:text="לפרטים"
+            android:textColor="@color/White"
+            android:textSize="20dp" />
 
 
-
-    <TextView
-        android:id="@+id/TVTaskInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp" />
-
-    <Button
-        android:id="@+id/btnAgreePair"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/TVPairInfo"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="50dp"
-        android:text="מסכים" />
-
-    <Button
-        android:id="@+id/btnPairFullInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/TVPairInfo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="20dp"
-        android:text="לפרטים" />
+        <Button
+            android:id="@+id/btnDontAgreePair"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="left"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="90dp"
+            android:background="@drawable/drawable_button"
+            android:fontFamily="@font/newfont"
+            android:text="לא מסכים"
+            android:textColor="@color/White"
+            android:textSize="20dp" />
 
 
-    <TextView
-        android:id="@+id/TVAgreementStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/TVPairInfo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="0dp" />
+        <TextView
+            android:id="@+id/TVPairInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="right"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="20dp"
+            android:fontFamily="@font/newfont"
+            android:text="פייר"
+            android:textColor="@color/BorderColor"
+            android:textSize="26dp" />
+
+        <TextView
+            android:id="@+id/TVCourseInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/newfont"
+            android:text="קורס"
+            android:textColor="@color/BorderColor"
+            android:textSize="26dp" />
+
+        <TextView
+            android:id="@+id/TVAgreementStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/newfont"
+            android:text="there Is"
+            android:textColor="@color/BorderColor" />
 
 
-    <Button
-        android:id="@+id/btnDontAgreePair"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/TVPairInfo"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="20dp"
-        android:text="לא מסכים" />
+        <TextView
+            android:id="@+id/TVTaskInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="left"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/newfont"
+            android:text="מטלה"
+            android:textColor="@color/BorderColor"
+            android:textSize="26dp" />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/CardView1"
+            android:layout_width="360dp"
+            android:layout_height="3px"
+            android:layout_gravity="top|center"
+            app:cardBackgroundColor="@color/SoftGray"
+            app:cardElevation="0dp">
+
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.cardview.widget.CardView>
+
 
 </RelativeLayout>

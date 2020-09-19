@@ -45,9 +45,9 @@ public class MyAdapter extends ArrayAdapter<ItemSpinner> {
             convertView = layoutInflator.inflate(R.layout.spinner_hours_item, null);
             holder = new ViewHolder();
             holder.mTextView = (TextView) convertView
-                    .findViewById(R.id.hour);
+                    .findViewById(R.id.hour_day);
             holder.mCheckBox = (CheckBox) convertView
-                    .findViewById(R.id.checkboxhour);
+                    .findViewById(R.id.checkboxhour_day);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
