@@ -201,6 +201,7 @@ public class CustomAdapter extends BaseAdapter {
                                                 holder.buttonViewDontAgree.setVisibility(View.INVISIBLE);
                                                 holder.buttonViewAgree.setVisibility(View.INVISIBLE);
                                                 holder.buttonViewFullInfo.setVisibility(View.VISIBLE);
+                                                UpdateUserDatabase(listItem.getUsername(),listItem.getPair_UN(),listItem.getFaculty(),listItem.getCourse(),listItem.getWorktype());
                                             } else if (listItem.getAgreed1() == -1) {
                                                 holder.textViewAgreementStatus.setText("את/ה לא הסכמת");
                                             }
@@ -271,6 +272,7 @@ public class CustomAdapter extends BaseAdapter {
                                                 holder.buttonViewDontAgree.setVisibility(View.INVISIBLE);
                                                 holder.buttonViewAgree.setVisibility(View.INVISIBLE);
                                                 holder.buttonViewFullInfo.setVisibility(View.VISIBLE);
+                                                UpdateUserDatabase(listItem.getUsername(),listItem.getPair_UN(),listItem.getFaculty(),listItem.getCourse(),listItem.getWorktype());
                                             } else if (listItem.getAgreed2() == -1) {
                                                 holder.textViewAgreementStatus.setText("את/ה לא הסכמת");
                                             }
@@ -370,6 +372,7 @@ public class CustomAdapter extends BaseAdapter {
                                                 holder.buttonViewDontAgree.setVisibility(View.INVISIBLE);
                                                 holder.buttonViewAgree.setVisibility(View.INVISIBLE);
                                                 holder.buttonViewFullInfo.setVisibility(View.VISIBLE);
+                                                UpdateUserDatabase(listItem.getUsername(),listItem.getPair_UN(),listItem.getFaculty(),listItem.getCourse(),listItem.getWorktype());
                                             } else if (listItem.getAgreed2() == -1) {
                                                 holder.textViewAgreementStatus.setText("את/ה לא הסכמת");
                                             }
@@ -441,6 +444,7 @@ public class CustomAdapter extends BaseAdapter {
                                                 holder.buttonViewDontAgree.setVisibility(View.INVISIBLE);
                                                 holder.buttonViewAgree.setVisibility(View.INVISIBLE);
                                                 holder.buttonViewFullInfo.setVisibility(View.VISIBLE);
+                                                UpdateUserDatabase(listItem.getUsername(),listItem.getPair_UN(),listItem.getFaculty(),listItem.getCourse(),listItem.getWorktype());
                                             } else if (listItem.getAgreed2() == -1) {
                                                 holder.textViewAgreementStatus.setText("את/ה לא הסכמת");
                                             }
@@ -487,71 +491,50 @@ public class CustomAdapter extends BaseAdapter {
             }
 
 
-
-
-
-/*
-            CardView cardView = v.findViewById(R.id.CardViewListItem);
-            ViewGroup.LayoutParams LPC = (ViewGroup.LayoutParams) cardView.getLayoutParams();
-            LPC.width = (int) (LPC.width * Globals.scaleDP);
-            LPC.height = (int) (LPC.height * Globals.scaleDP);
-            cardView.setLayoutParams(LPC);
-            final int childCount = cardView.getChildCount();
-            float Scale169=1f;
-            if(Globals.ActualWidth / Globals.ActualHeight > 9.0f /16.0f)
-                Scale169=0.95f;
-            for (int c = 0; c < childCount; c++) {
-                View view = cardView.getChildAt(c);
-
-                FrameLayout.LayoutParams LP = (FrameLayout.LayoutParams) view.getLayoutParams();
-                FrameLayout.LayoutParams NewLP = new FrameLayout.LayoutParams(LP);
-
-
-                NewLP.setMargins((int) (LP.leftMargin * Globals.scaleDP), (int) (LP.topMargin * Globals.scaleDP),
-                        (int) (LP.rightMargin * Globals.scaleDP), (int) (LP.bottomMargin * Globals.scaleDP));
-                if (NewLP.height > 0 && NewLP.width > 0) {
-                    NewLP.width = (int) (LP.width * Globals.scaleDP);
-                    NewLP.height = (int) (LP.height * Globals.scaleDP);
-                }
-                if (view instanceof Button) {
-                    Button button = (Button) view;
-                    float size = button.getTextSize();
-                    button.setTextSize((button.getTextSize() * Scale169 * Globals.scaleDP * Globals.scaleS) / Globals.DP);
-                } else if (view instanceof EditText) {
-                    EditText editText = (EditText) view;
-                    float size = editText.getTextSize();
-                    editText.setTextSize((editText.getTextSize() * Globals.scaleDP * Globals.scaleS) / Globals.DP);
-                } else if (view instanceof TextView) {
-                    TextView textView = (TextView) view;
-                    float size = textView.getTextSize();
-                    textView.setTextSize((textView.getTextSize() * Globals.scaleDP * Globals.scaleS) / Globals.DP);
-                } else if (view instanceof ImageView) {
-                    ImageView imageView = (ImageView) view;
-                    float height = imageView.getHeight();
-                    float width = imageView.getWidth();
-
-                }
-
-                view.setLayoutParams(NewLP);
-
-
-            }
-
-
-
-
-*/
-
-
-
-
-
-
-
         }
 
         return v;
     }
 
 
+    void UpdateUserDatabase(String username1, String username2, String faculty, String course, String workType) {
+
+        Response.Listener<String> responseListener = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonResponse = new JSONObject(response);
+                    boolean success = jsonResponse.getBoolean("success");
+                    if (success) {
+
+                        //Intent intent = new Intent();
+                        //getActivity().startActivity(intent);
+                        //Intent intent = new Intent(AuthenticateUser.this, RegisterEventActivity.class);
+                        //AuthenticateUser.this.startActivity(intent);
+
+                        try {
+                            //if (AuthenticateUser.this != null)
+                            //hideSoftKeyboard(AuthenticateUser.this);
+                        } catch (Exception e) {
+
+                        }
+
+                    } else {
+                        Toast.makeText(context, "שליחה נכשלה", Toast.LENGTH_LONG).show();
+                        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                        builder.setMessage("Register Failed")
+                                .setNegativeButton("Retry", null)
+                                .create()
+                                .show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        RemoveUsersReq AgreementRequest = new RemoveUsersReq(username1, username2, faculty, course, workType, "id14702484_clients", "id14702484_pairingapp", "Pairing2020YR!", responseListener);
+        RequestQueue queue = Volley.newRequestQueue(context);
+        queue.add(AgreementRequest);
+
+    }
 }

@@ -4,11 +4,10 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -20,6 +19,14 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,7 +52,17 @@ public class MainActivity extends AppCompatActivity {
         spinnerFaculty.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                ArrayAdapter<CharSequence> adapterF;
+                if (i == 0) {
+                    adapterF = ArrayAdapter.createFromResource(getBaseContext(),
+                            R.array.cs_courses_array, R.layout.spinner_item);
+                } else {
+                    adapterF = ArrayAdapter.createFromResource(getBaseContext(),
+                            R.array.math_courses_array, R.layout.spinner_item);
 
+                }
+                adapterF.setDropDownViewResource(R.layout.spinner_item_blue);
+                spinnerCourses.setAdapter(adapterF);
                 //Toast.makeText(getContext(), "this is " + i, Toast.LENGTH_SHORT).show();
             }
 
@@ -56,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
-                R.array.courses_array, R.layout.spinner_item);
+                R.array.cs_courses_array, R.layout.spinner_item);
         adapter2.setDropDownViewResource(R.layout.spinner_item_blue);
         spinnerCourses.setAdapter(adapter2);
         spinnerCourses.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -91,11 +108,62 @@ public class MainActivity extends AppCompatActivity {
         btnCont.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+
+
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonResponse = new JSONObject(response);
+                            boolean success = jsonResponse.getBoolean("success");
+                            if (success) {
+
+
+                                Intent intent = new Intent(MainActivity.this, RegisterInfoActivity.class);
+                                MainActivity.this.startActivity(intent);
+                                //Intent intent = new Intent();
+                                //getActivity().startActivity(intent);
+                                //Intent intent = new Intent(AuthenticateUser.this, RegisterEventActivity.class);
+                                //AuthenticateUser.this.startActivity(intent);
+
+                                try {
+                                    //if (AuthenticateUser.this != null)
+                                    //hideSoftKeyboard(AuthenticateUser.this);
+                                } catch (Exception e) {
+
+                                }
+
+                            } else {
+                                Toast.makeText(getApplicationContext(), "כבר רשום למטלה הזו", Toast.LENGTH_LONG).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+
                 Globals.faculty=spinnerFaculty.getSelectedItem().toString();
                 Globals.course=spinnerCourses.getSelectedItem().toString();
                 Globals.workType=spinnerType.getSelectedItem().toString();
-                Intent intent = new Intent(MainActivity.this, RegisterInfoActivity.class);
-                MainActivity.this.startActivity(intent);
+
+                CheckRegistration checkRegistration = new CheckRegistration(Globals.global_user_name, Globals.faculty, Globals.course, Globals.workType, "id14702484_clients", "id14702484_pairingapp", "Pairing2020YR!", responseListener);
+                RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+                queue.add(checkRegistration);
+
+
+
+
+
+
+
+
+
+
+
+
+
             }
         });
     }
