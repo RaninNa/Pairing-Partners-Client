@@ -127,7 +127,7 @@ public class showPartners extends AppCompatActivity {
         };
 
 
-        getPartnersReq getPartners = new getPartnersReq(Globals.global_user_name, "id14702484_clients", "id14702484_pairingapp", "Pairing2020YR!", responseListener);
+        getPartnersReq getPartners = new getPartnersReq(Globals.global_user_name, "u747931869_FindPair", "u747931869_yuosifhanna", "V!5:Eg0H~", responseListener);
         RequestQueue queue = Volley.newRequestQueue(showPartners.this);
         queue.add(getPartners);
 

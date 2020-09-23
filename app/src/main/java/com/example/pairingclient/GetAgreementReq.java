@@ -11,7 +11,7 @@ import java.util.Map;
 public class GetAgreementReq extends StringRequest {
 
 
-    private static final String LOGIN_REQUEST_URL =  "https://pairingapp.000webhostapp.com/GetAgreement.php";
+    private static final String LOGIN_REQUEST_URL =  "https://aarasna.in/GetAgreement.php";
     private Map<String, String> params;
 
     public GetAgreementReq(String faculty, String course, String workType, String Pair_UN, String dbname, String dbuser, String dbpass, Response.Listener<String> listener) {

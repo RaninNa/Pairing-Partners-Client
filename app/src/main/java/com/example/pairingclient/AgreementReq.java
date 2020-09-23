@@ -9,7 +9,7 @@ import java.util.Map;
 public class AgreementReq extends StringRequest {
 
 
-    private static final String LOGIN_REQUEST_URL =  "https://pairingapp.000webhostapp.com/Agreement.php";
+    private static final String LOGIN_REQUEST_URL =  "https://aarasna.in/Agreement.php";
     private Map<String, String> params;
 
     public AgreementReq(int id, int type, int agreed, String dbname, String dbuser, String dbpass, Response.Listener<String> listener) {

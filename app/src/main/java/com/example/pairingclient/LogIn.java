@@ -52,7 +52,7 @@ public class LogIn extends AppCompatActivity {
                         try {
                             JSONObject jsonResponse = new JSONObject(response);
                             boolean success = jsonResponse.getBoolean("success");
-                            String id = jsonResponse.getString("id");
+                            //String id = jsonResponse.getString("id");
                             if (success) {
                                 Globals.global_user_name = user_nameT.getText().toString();
                                 Intent intent = new Intent(LogIn.this, Menu.class);
@@ -87,7 +87,7 @@ public class LogIn extends AppCompatActivity {
                 String password = passwordT.getText().toString();
 
 
-                CheckAccount check = new CheckAccount(user_name, password,"id14702484_clients", "id14702484_pairingapp", "Pairing2020YR!", responseListener);
+                CheckAccount check = new CheckAccount(user_name, password,"u747931869_FindPair", "u747931869_yuosifhanna", "V!5:Eg0H~", responseListener);
                 RequestQueue queue = Volley.newRequestQueue(LogIn.this);
                 queue.add(check);
 

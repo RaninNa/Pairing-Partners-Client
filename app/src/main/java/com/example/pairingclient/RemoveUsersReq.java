@@ -9,7 +9,7 @@ import java.util.Map;
 public class RemoveUsersReq extends StringRequest {
 
 
-    private static final String LOGIN_REQUEST_URL =  "https://pairingapp.000webhostapp.com/RemoveUsers.php";
+    private static final String LOGIN_REQUEST_URL =  "https://aarasna.in/RemoveUsers.php";
     private Map<String, String> params;
 
     public RemoveUsersReq(String username1, String username2, String faculty, String course, String workType, String dbname, String dbuser, String dbpass, Response.Listener<String> listener) {
