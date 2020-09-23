@@ -240,7 +240,7 @@ public class CustomAdapter extends BaseAdapter {
                                 }
                             }
                         };
-                        AgreementReq AgreementRequest = new AgreementReq(listItem.getId(), 0, 1, "id14702484_clients", "id14702484_pairingapp", "Pairing2020YR!", responseListener);
+                        AgreementReq AgreementRequest = new AgreementReq(listItem.getId(), 0, 1, "u747931869_FindPair", "u747931869_yuosifhanna", "V!5:Eg0H~", responseListener);
                         RequestQueue queue = Volley.newRequestQueue(context);
                         queue.add(AgreementRequest);
 
@@ -311,7 +311,7 @@ public class CustomAdapter extends BaseAdapter {
                                 }
                             }
                         };
-                        AgreementReq AgreementRequest = new AgreementReq(listItem.getId(), 0, -1, "id14702484_clients", "id14702484_pairingapp", "Pairing2020YR!", responseListener);
+                        AgreementReq AgreementRequest = new AgreementReq(listItem.getId(), 0, -1, "u747931869_FindPair", "u747931869_yuosifhanna", "V!5:Eg0H~", responseListener);
                         RequestQueue queue = Volley.newRequestQueue(context);
                         queue.add(AgreementRequest);
                     }
@@ -411,7 +411,7 @@ public class CustomAdapter extends BaseAdapter {
                                 }
                             }
                         };
-                        AgreementReq AgreementRequest = new AgreementReq(listItem.getId(), 1, 1, "id14702484_clients", "id14702484_pairingapp", "Pairing2020YR!", responseListener);
+                        AgreementReq AgreementRequest = new AgreementReq(listItem.getId(), 1, 1, "u747931869_FindPair", "u747931869_yuosifhanna", "V!5:Eg0H~", responseListener);
                         RequestQueue queue = Volley.newRequestQueue(context);
                         queue.add(AgreementRequest);
 
@@ -483,7 +483,7 @@ public class CustomAdapter extends BaseAdapter {
                                 }
                             }
                         };
-                        AgreementReq AgreementRequest = new AgreementReq(listItem.getId(), 1, -1, "id14702484_clients", "id14702484_pairingapp", "Pairing2020YR!", responseListener);
+                        AgreementReq AgreementRequest = new AgreementReq(listItem.getId(), 1, -1, "u747931869_FindPair", "u747931869_yuosifhanna", "V!5:Eg0H~", responseListener);
                         RequestQueue queue = Volley.newRequestQueue(context);
                         queue.add(AgreementRequest);
                     }
@@ -532,7 +532,7 @@ public class CustomAdapter extends BaseAdapter {
                 }
             }
         };
-        RemoveUsersReq AgreementRequest = new RemoveUsersReq(username1, username2, faculty, course, workType, "id14702484_clients", "id14702484_pairingapp", "Pairing2020YR!", responseListener);
+        RemoveUsersReq AgreementRequest = new RemoveUsersReq(username1, username2, faculty, course, workType, "u747931869_FindPair", "u747931869_yuosifhanna", "V!5:Eg0H~", responseListener);
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(AgreementRequest);
 

@@ -10,8 +10,8 @@ import java.util.Map;
 
 
 public class RegisterUserReq extends StringRequest {
-    private static final String REGISTER_REQUEST_URL = "https://pairingapp.000webhostapp.com/RegisterUser.php";
-    private static final String REGISTER_USER_REQUEST_URL = "https://pairingapp.000webhostapp.com/registerUserName.php";
+    private static final String REGISTER_REQUEST_URL = "https://aarasna.in/RegisterUser.php";
+    private static final String REGISTER_USER_REQUEST_URL = "https://aarasna.in/registerUserName.php";
     private Map<String, String> params;
 
     public RegisterUserReq(String user_name, String name, String gender,String location, int age, String phone, String email, String year, String gradeAverage, String workPlan, String meeting, String prefGen, String workHours, Boolean iLocation,

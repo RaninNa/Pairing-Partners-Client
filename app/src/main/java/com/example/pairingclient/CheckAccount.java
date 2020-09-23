@@ -9,12 +9,12 @@ import java.util.Map;
 
 
 public class CheckAccount extends StringRequest {
-    private static final String REGISTER_REQUEST_URL = "https://pairingapp.000webhostapp.com/checkUserName.php";
+    private static final String REGISTER_REQUEST_URL = "https://aarasna.in/checkUserName.php";
     private Map<String, String> params;
 
 
     public CheckAccount(String user_name, String password, String dbname, String dbuser, String dbpass, Response.Listener<String> listener) {
-        super(Request.Method.POST, REGISTER_REQUEST_URL, listener, null);
+        super(Request.Method.DEPRECATED_GET_OR_POST, REGISTER_REQUEST_URL, listener, null);
         params = new HashMap<>();
         params.put("dbname", dbname);
         params.put("dbuser", dbuser);

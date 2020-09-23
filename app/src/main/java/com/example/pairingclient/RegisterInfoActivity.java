@@ -332,7 +332,7 @@ public class RegisterInfoActivity extends AppCompatActivity {
 
 
                 RegisterUserReq registerRequest = new RegisterUserReq(user_name, name, gender, location, age, phone, email, year, gradeAverage, workPlan,
-                        meeting, prefGen, workHours, iLocation, iGrade, faculty, course, workType, "id14702484_clients", "id14702484_pairingapp", "Pairing2020YR!", responseListener);
+                        meeting, prefGen, workHours, iLocation, iGrade, faculty, course, workType, "u747931869_FindPair", "u747931869_yuosifhanna", "V!5:Eg0H~", responseListener);
                 RequestQueue queue = Volley.newRequestQueue(RegisterInfoActivity.this);
                 queue.add(registerRequest);
 

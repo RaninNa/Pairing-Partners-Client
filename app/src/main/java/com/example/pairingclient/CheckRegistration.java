@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class CheckRegistration extends StringRequest {
 
-    private static final String LOGIN_REQUEST_URL =  "https://pairingapp.000webhostapp.com/CheckRegisteration.php";
+    private static final String LOGIN_REQUEST_URL =  "https://aarasna.in/CheckRegisteration.php";
     private Map<String, String> params;
 
     public CheckRegistration(String username, String faculty, String course, String worktype, String dbname, String dbuser, String dbpass, Response.Listener<String> listener) {

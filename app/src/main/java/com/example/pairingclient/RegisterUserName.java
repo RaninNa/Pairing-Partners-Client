@@ -88,7 +88,7 @@ public class RegisterUserName extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "חובה למלא את כל הפרטים", Toast.LENGTH_LONG).show();
                     return;
                 }
-                if(!repasswordT.getText().equals(passwordT.getText()))
+                if(!repasswordT.getText().toString().equals(passwordT.getText().toString()))
                 {
                     Toast.makeText(getApplicationContext(), "שתי הסיסמאות לא זהות", Toast.LENGTH_LONG).show();
                     return;
@@ -98,7 +98,7 @@ public class RegisterUserName extends AppCompatActivity {
                 String password = passwordT.getText().toString();
 
 
-                RegisterUserReq registerRequest = new RegisterUserReq(user_name, password,"id14702484_clients", "id14702484_pairingapp", "Pairing2020YR!", responseListener);
+                RegisterUserReq registerRequest = new RegisterUserReq(user_name, password,"u747931869_FindPair", "u747931869_yuosifhanna", "V!5:Eg0H~", responseListener);
                 RequestQueue queue = Volley.newRequestQueue(RegisterUserName.this);
                 queue.add(registerRequest);
 
