@@ -12,7 +12,7 @@ public class RemoveUsersReq extends StringRequest {
     private static final String LOGIN_REQUEST_URL =  "https://aarasna.in/RemoveUsers.php";
     private Map<String, String> params;
 
-    public RemoveUsersReq(String username1, String username2, String faculty, String course, String workType, String dbname, String dbuser, String dbpass, Response.Listener<String> listener) {
+    public RemoveUsersReq(String username1, String username2, String faculty, String course, String workType,int TypeU, String dbname, String dbuser, String dbpass, Response.Listener<String> listener) {
         super(Method.POST, LOGIN_REQUEST_URL, listener, null);
         params = new HashMap<>();
         params.put("dbname", dbname);
@@ -23,6 +23,7 @@ public class RemoveUsersReq extends StringRequest {
         params.put("faculty", faculty);
         params.put("course", course);
         params.put("workType", workType);
+        params.put("type", ""+TypeU);
     }
 
 

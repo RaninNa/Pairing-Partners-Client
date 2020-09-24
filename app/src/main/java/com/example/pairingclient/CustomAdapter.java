@@ -201,9 +201,10 @@ public class CustomAdapter extends BaseAdapter {
                                                 holder.buttonViewDontAgree.setVisibility(View.INVISIBLE);
                                                 holder.buttonViewAgree.setVisibility(View.INVISIBLE);
                                                 holder.buttonViewFullInfo.setVisibility(View.VISIBLE);
-                                                UpdateUserDatabase(listItem.getUsername(),listItem.getPair_UN(),listItem.getFaculty(),listItem.getCourse(),listItem.getWorktype());
+                                                UpdateUserDatabase(listItem.getUsername(),listItem.getPair_UN(),listItem.getFaculty(),listItem.getCourse(),listItem.getWorktype(), 1);
                                             } else if (listItem.getAgreed1() == -1) {
                                                 holder.textViewAgreementStatus.setText("את/ה לא הסכמת");
+                                                UpdateUserDatabase(listItem.getUsername(),listItem.getPair_UN(),listItem.getFaculty(),listItem.getCourse(),listItem.getWorktype(), 0);
                                             }
                                         } else if (listItem.getAgreed2() == 0) {
                                             holder.textViewAgreementStatus.setText("");
@@ -272,9 +273,10 @@ public class CustomAdapter extends BaseAdapter {
                                                 holder.buttonViewDontAgree.setVisibility(View.INVISIBLE);
                                                 holder.buttonViewAgree.setVisibility(View.INVISIBLE);
                                                 holder.buttonViewFullInfo.setVisibility(View.VISIBLE);
-                                                UpdateUserDatabase(listItem.getUsername(),listItem.getPair_UN(),listItem.getFaculty(),listItem.getCourse(),listItem.getWorktype());
+                                                UpdateUserDatabase(listItem.getUsername(),listItem.getPair_UN(),listItem.getFaculty(),listItem.getCourse(),listItem.getWorktype(), 1);
                                             } else if (listItem.getAgreed2() == -1) {
                                                 holder.textViewAgreementStatus.setText("את/ה לא הסכמת");
+                                                UpdateUserDatabase(listItem.getUsername(),listItem.getPair_UN(),listItem.getFaculty(),listItem.getCourse(),listItem.getWorktype(), 0);
                                             }
                                         } else if (listItem.getAgreed2() == 0) {
                                             holder.textViewAgreementStatus.setText("");
@@ -372,9 +374,10 @@ public class CustomAdapter extends BaseAdapter {
                                                 holder.buttonViewDontAgree.setVisibility(View.INVISIBLE);
                                                 holder.buttonViewAgree.setVisibility(View.INVISIBLE);
                                                 holder.buttonViewFullInfo.setVisibility(View.VISIBLE);
-                                                UpdateUserDatabase(listItem.getUsername(),listItem.getPair_UN(),listItem.getFaculty(),listItem.getCourse(),listItem.getWorktype());
+                                                UpdateUserDatabase(listItem.getUsername(),listItem.getPair_UN(),listItem.getFaculty(),listItem.getCourse(),listItem.getWorktype(), 1);
                                             } else if (listItem.getAgreed2() == -1) {
                                                 holder.textViewAgreementStatus.setText("את/ה לא הסכמת");
+                                                UpdateUserDatabase(listItem.getUsername(),listItem.getPair_UN(),listItem.getFaculty(),listItem.getCourse(),listItem.getWorktype(), 0);
                                             }
                                         } else if (listItem.getAgreed1() == 0) {
                                             holder.textViewAgreementStatus.setText("");
@@ -444,9 +447,10 @@ public class CustomAdapter extends BaseAdapter {
                                                 holder.buttonViewDontAgree.setVisibility(View.INVISIBLE);
                                                 holder.buttonViewAgree.setVisibility(View.INVISIBLE);
                                                 holder.buttonViewFullInfo.setVisibility(View.VISIBLE);
-                                                UpdateUserDatabase(listItem.getUsername(),listItem.getPair_UN(),listItem.getFaculty(),listItem.getCourse(),listItem.getWorktype());
+                                                UpdateUserDatabase(listItem.getUsername(),listItem.getPair_UN(),listItem.getFaculty(),listItem.getCourse(),listItem.getWorktype(), 1);
                                             } else if (listItem.getAgreed2() == -1) {
                                                 holder.textViewAgreementStatus.setText("את/ה לא הסכמת");
+                                                UpdateUserDatabase(listItem.getUsername(),listItem.getPair_UN(),listItem.getFaculty(),listItem.getCourse(),listItem.getWorktype(), 0);
                                             }
                                         } else if (listItem.getAgreed1() == 0) {
                                             holder.textViewAgreementStatus.setText("");
@@ -497,7 +501,7 @@ public class CustomAdapter extends BaseAdapter {
     }
 
 
-    void UpdateUserDatabase(String username1, String username2, String faculty, String course, String workType) {
+    void UpdateUserDatabase(String username1, String username2, String faculty, String course, String workType, int TypeU) {
 
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
@@ -532,7 +536,7 @@ public class CustomAdapter extends BaseAdapter {
                 }
             }
         };
-        RemoveUsersReq AgreementRequest = new RemoveUsersReq(username1, username2, faculty, course, workType, "u747931869_FindPair", "u747931869_yuosifhanna", "V!5:Eg0H~", responseListener);
+        RemoveUsersReq AgreementRequest = new RemoveUsersReq(username1, username2, faculty, course, workType, TypeU, "u747931869_FindPair", "u747931869_yuosifhanna", "V!5:Eg0H~", responseListener);
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(AgreementRequest);
 

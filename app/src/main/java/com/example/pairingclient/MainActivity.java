@@ -54,10 +54,10 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 ArrayAdapter<CharSequence> adapterF;
                 if (i == 0) {
-                    adapterF = ArrayAdapter.createFromResource(getBaseContext(),
+                    adapterF = ArrayAdapter.createFromResource(MainActivity.this,
                             R.array.cs_courses_array, R.layout.spinner_item);
                 } else {
-                    adapterF = ArrayAdapter.createFromResource(getBaseContext(),
+                    adapterF = ArrayAdapter.createFromResource(MainActivity.this,
                             R.array.math_courses_array, R.layout.spinner_item);
 
                 }
@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
                 Globals.course=spinnerCourses.getSelectedItem().toString();
                 Globals.workType=spinnerType.getSelectedItem().toString();
 
-                CheckRegistration checkRegistration = new CheckRegistration(Globals.global_user_name, Globals.faculty, Globals.course, Globals.workType, "id14702484_clients", "id14702484_pairingapp", "Pairing2020YR!", responseListener);
+                CheckRegistration checkRegistration = new CheckRegistration(Globals.global_user_name, Globals.faculty, Globals.course, Globals.workType, "u747931869_FindPair", "u747931869_yuosifhanna", "V!5:Eg0H~", responseListener);
                 RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
                 queue.add(checkRegistration);
 
