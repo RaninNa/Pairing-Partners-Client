@@ -41,6 +41,17 @@
             android:text="לפרטים"
             android:textColor="@color/White"
             android:textSize="20dp" />
+        <Button
+            android:id="@+id/btnOkay"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="90dp"
+            android:background="@drawable/drawable_button"
+            android:fontFamily="@font/newfont"
+            android:text="בסדר"
+            android:textColor="@color/White"
+            android:textSize="20dp" />
 
 
         <Button
