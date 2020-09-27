@@ -8,6 +8,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
@@ -42,6 +43,9 @@ public class LogIn extends AppCompatActivity {
         final EditText user_nameT = (EditText) findViewById(R.id.UserName);
         final EditText passwordT = (EditText) findViewById(R.id.UserPassword);
 
+        Globals.sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+
         logInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,6 +61,11 @@ public class LogIn extends AppCompatActivity {
                                 Globals.global_user_name = user_nameT.getText().toString();
                                 Intent intent = new Intent(LogIn.this, Menu.class);
                                 LogIn.this.startActivity(intent);
+                                Globals.editor = Globals.sharedPreferences.edit();
+                                Globals.editor.putString("username", user_nameT.getText().toString());
+                                Globals.editor.putString("password", passwordT.getText().toString());
+                                Globals.editor.commit();
+
 
                                 try {
                                     //if (AuthenticateUser.this != null)
@@ -91,6 +100,7 @@ public class LogIn extends AppCompatActivity {
                 RequestQueue queue = Volley.newRequestQueue(LogIn.this);
                 queue.add(check);
 
+
             }
         });
 
@@ -102,6 +112,10 @@ public class LogIn extends AppCompatActivity {
             }
         });
 
+        String UN= Globals.sharedPreferences.getString("username","");
+        String PW= Globals.sharedPreferences.getString("password","");
+        user_nameT.setText(UN);
+        passwordT.setText(PW);
 
     }
 

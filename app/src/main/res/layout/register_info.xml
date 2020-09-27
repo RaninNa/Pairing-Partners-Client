@@ -321,6 +321,21 @@
                         android:textSize="24dp" />
 
 
+                    <CheckBox
+                        android:id="@+id/checkBoxSaveInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="1120dp"
+                        android:buttonTint="@color/BorderColor"
+                        android:fontFamily="@font/newfont"
+                        android:layout_marginBottom="50dp"
+                        android:checked="true"
+                        android:text="שמור פרטים"
+                        android:textColor="@color/BorderColor"
+                        android:textSize="24dp" />
+
+
                 </RelativeLayout>
             </LinearLayout>
         </ScrollView>

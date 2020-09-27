@@ -27,6 +27,7 @@
         <activity android:name=".showPartner"></activity>
         <activity android:name=".Menu" />
         <activity android:name=".RegisterUserName" />
+        <activity android:name=".SettingsActivity" />
         <activity android:name=".ActivityLocation" >
             <meta-data
                 android:name="com.google.android.geo.API_KEY"
