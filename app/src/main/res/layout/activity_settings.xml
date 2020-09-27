@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/RLSettingsActivity"
+    android:background="@drawable/color_gradient">
+
+    <Button
+        android:id="@+id/btnSaveInfo"
+        android:layout_width="257dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/drawable_button"
+        android:fontFamily="@font/newfont"
+        android:text="שמור פרטים"
+        android:textColor="@color/White"
+        android:textSize="29dp" />
+
+    <RelativeLayout
+        android:id="@+id/RLCardView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="210dp"
+        android:background="@color/White"></RelativeLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CardViewSettings"
+        android:layout_width="332.5dp"
+        android:layout_height="570dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        app:cardBackgroundColor="@color/White"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="7dp">
+
+        <ScrollView
+            android:id="@+id/ScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/RLSettings"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/btnPickLocation"
+                        android:layout_width="257dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="520dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/drawable_button"
+                        android:fontFamily="@font/newfont"
+                        android:text="בחר מקום"
+                        android:textColor="@color/White"
+                        android:textSize="29dp" />
+
+
+                    <CheckBox
+                        android:id="@+id/checkBoxAutoCompletion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="590dp"
+                        android:layout_marginBottom="50dp"
+                        android:buttonTint="@color/BorderColor"
+                        android:fontFamily="@font/newfont"
+                        android:text="מילוי פרטים אוטומטי"
+                        android:textColor="@color/BorderColor"
+                        android:textSize="24dp" />
+
+
+                    <EditText
+                        android:id="@+id/editTextTextPersonName"
+                        android:layout_width="257dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/drawable_edittext"
+                        android:ems="10"
+                        android:fontFamily="@font/newfont"
+                        android:hint="שם פרטי"
+                        android:inputType="textPersonName"
+                        android:paddingRight="15dp"
+                        android:textColor="@color/BorderColor"
+                        android:textColorHint="@color/hintColor"
+                        android:textSize="29dp" />
+
+
+                    <EditText
+                        android:id="@+id/editTextTextAge"
+                        android:layout_width="257dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="170dp"
+                        android:background="@drawable/drawable_edittext"
+                        android:ems="10"
+                        android:fontFamily="@font/newfont"
+                        android:hint="גיל"
+                        android:inputType="number"
+                        android:paddingRight="15dp"
+                        android:textColor="@color/BorderColor"
+                        android:textColorHint="@color/hintColor"
+                        android:textSize="29dp" />
+
+
+                    <EditText
+                        android:id="@+id/editTextTextPhone"
+                        android:layout_width="257dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="240dp"
+                        android:background="@drawable/drawable_edittext"
+                        android:ems="10"
+                        android:fontFamily="@font/newfont"
+                        android:gravity="right"
+                        android:hint="מספר טלפון"
+                        android:inputType="phone"
+                        android:paddingRight="15dp"
+                        android:textColor="@color/BorderColor"
+                        android:textColorHint="@color/hintColor"
+                        android:textSize="29dp" />
+
+                    <EditText
+                        android:id="@+id/editTextTextEmail"
+                        android:layout_width="257dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="310dp"
+                        android:background="@drawable/drawable_edittext"
+                        android:ems="10"
+                        android:fontFamily="@font/newfont"
+                        android:hint="אימייל"
+                        android:inputType="textPersonName"
+                        android:paddingRight="15dp"
+                        android:textColor="@color/BorderColor"
+                        android:textColorHint="@color/hintColor"
+                        android:textSize="29dp" />
+
+
+                    <EditText
+                        android:id="@+id/editTextTextGPA"
+                        android:layout_width="257dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="380dp"
+                        android:background="@drawable/drawable_edittext"
+                        android:ems="10"
+                        android:fontFamily="@font/newfont"
+                        android:hint="ציון ממוצע"
+                        android:inputType="numberDecimal"
+                        android:paddingRight="15dp"
+                        android:textColor="@color/BorderColor"
+                        android:textColorHint="@color/hintColor"
+                        android:textSize="29dp" />
+
+                    <Spinner
+                        android:id="@+id/spinnerGender"
+                        android:layout_width="257dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="100dp"
+                        android:background="@drawable/drawable_edittext"
+                        android:gravity="center"
+                        android:paddingBottom="10dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/BorderColor"
+                        android:textSize="29dp" />
+
+
+                    <Spinner
+                        android:id="@+id/spinnerStudYear"
+                        android:layout_width="257dp"
+                        android:layout_height="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="450dp"
+                        android:background="@drawable/drawable_edittext"
+                        android:gravity="center"
+                        android:paddingBottom="10dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/EasyBlue"
+                        android:textSize="24dp" />
+
+
+                </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

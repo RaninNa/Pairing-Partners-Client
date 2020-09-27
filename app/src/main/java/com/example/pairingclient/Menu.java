@@ -25,11 +25,26 @@ public class Menu extends AppCompatActivity {
         Button checkPartnerBtn =  (Button) findViewById(R.id.checkPartnerBtn);
         Button Exit =  (Button) findViewById(R.id.BtnExit);
         Button newCourseBtn =  (Button) findViewById(R.id.newCourseBtn);
+        Button btnSettings =  (Button) findViewById(R.id.btnSettings);
 
         Exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+        checkPartnerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Menu.this, showPartners.class);
+                Menu.this.startActivity(intent);
+            }
+        });
+        btnSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Menu.this, SettingsActivity.class);
+                Menu.this.startActivity(intent);
             }
         });
         checkPartnerBtn.setOnClickListener(new View.OnClickListener() {

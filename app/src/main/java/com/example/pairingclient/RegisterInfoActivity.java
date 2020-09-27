@@ -33,6 +33,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 public class RegisterInfoActivity extends AppCompatActivity {
+    JSONObject SaveInfo;
+    JSONObject responseJson;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +49,7 @@ public class RegisterInfoActivity extends AppCompatActivity {
 
         final CheckBox CBiLocation = (CheckBox) findViewById(R.id.checkBoxLocation);
         final CheckBox CBiGrade = (CheckBox) findViewById(R.id.checkBoxGrade);
+        final CheckBox CBSaveInfo = (CheckBox) findViewById(R.id.checkBoxSaveInfo);
 
 
         final Spinner spinnerGender = (Spinner) findViewById(R.id.spinnerGender);
@@ -141,7 +144,7 @@ public class RegisterInfoActivity extends AppCompatActivity {
 
 
         final String[] hours = {"שעות עבודה", "בוקר", "צהוריים", "ערב"};
-        final String[] days = {"ימי עבודה", "יום א", "יום ב", "יום ג","יום ד", "יום ה","יום ו", "יום ש"};
+        final String[] days = {"ימי עבודה", "יום א", "יום ב", "יום ג", "יום ד", "יום ה", "יום ו", "יום ש"};
 
         final Spinner spinnerWorkingTime = (Spinner) findViewById(R.id.spinnerWorkingTime);
         final Spinner spinnerWorkingDays = (Spinner) findViewById(R.id.spinnerWorkingDays);
@@ -189,13 +192,6 @@ public class RegisterInfoActivity extends AppCompatActivity {
             */
 
 
-
-
-
-
-
-
-
         ArrayAdapter<CharSequence> adapter7 = ArrayAdapter.createFromResource(this,
                 R.array.study_year_array, R.layout.spinner_item);
         adapter7.setDropDownViewResource(R.layout.spinner_item_blue);
@@ -227,8 +223,6 @@ public class RegisterInfoActivity extends AppCompatActivity {
         //Toast.makeText(getApplicationContext(), "lat: " + Globals.Location.latitude + " long: " + Globals.Location.longitude, Toast.LENGTH_LONG).show();
 
 
-
-
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -242,7 +236,15 @@ public class RegisterInfoActivity extends AppCompatActivity {
                             boolean success = jsonResponse.getBoolean("success");
                             String id = jsonResponse.getString("id");
                             if (success) {
-                                Toast.makeText(getApplicationContext(), "שליחה התבצעה", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "שליחה התבצעה, נא להמתין...", Toast.LENGTH_LONG).show();
+
+
+                                if (CBSaveInfo.isChecked()) {
+                                    Globals.editor = Globals.sharedPreferences.edit();
+                                    Globals.editor.putString("SaveInfo", SaveInfo.toString());
+                                    Globals.editor.commit();
+                                }
+                                finish();
                                 //Intent intent = new Intent();
                                 //getActivity().startActivity(intent);
                                 //Intent intent = new Intent(AuthenticateUser.this, RegisterEventActivity.class);
@@ -288,11 +290,13 @@ public class RegisterInfoActivity extends AppCompatActivity {
                 String user_name = Globals.global_user_name;
                 String name = ETname.getText().toString();
                 String gender = spinnerGender.getSelectedItem().toString();
+                int genderNo = spinnerGender.getSelectedItemPosition();
                 String location = Globals.Location.latitude + "@" + Globals.Location.longitude;//spinnerLocation.getSelectedItem().toString();
                 int age = Integer.parseInt(ETage.getText().toString());
                 String phone = ETphone.getText().toString();
                 String email = ETemail.getText().toString();
                 String year = spinnerStudyYear.getSelectedItem().toString();
+                int yearNo = spinnerStudyYear.getSelectedItemPosition();
                 String gradeAverage = ETAverage.getText().toString();
                 String workPlan = spinnerWorkingWay.getSelectedItem().toString();
                 String meeting = spinnerMeetings.getSelectedItem().toString();
@@ -336,13 +340,61 @@ public class RegisterInfoActivity extends AppCompatActivity {
                 RequestQueue queue = Volley.newRequestQueue(RegisterInfoActivity.this);
                 queue.add(registerRequest);
 
+                SaveInfo = new JSONObject();
+                try {
+                    SaveInfo.put("user_name", user_name);
+                    SaveInfo.put("name", name);
+                    SaveInfo.put("gender", genderNo);
+                    JSONObject locJson = new JSONObject();
+                    locJson.put("latitude", Globals.Location.latitude);
+                    locJson.put("longitude", Globals.Location.longitude);
+                    SaveInfo.put("location", locJson.toString());
+                    SaveInfo.put("age", age + "");
+                    SaveInfo.put("phone", phone);
+                    SaveInfo.put("email", email);
+                    SaveInfo.put("year", yearNo);
+                    SaveInfo.put("gradeAverage", gradeAverage);
+                    SaveInfo.put("workPlan", workPlan);
+                    SaveInfo.put("meeting", meeting);
+                    SaveInfo.put("prefGen", prefGen);
+                    SaveInfo.put("workHours", workHours);
+                    SaveInfo.put("iLocation", iLocation.toString());
+                    SaveInfo.put("iGrade", iGrade.toString());
+                    SaveInfo.put("faculty", faculty);
+                    SaveInfo.put("course", course);
+                    SaveInfo.put("workType", workType);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
             }
         });
+        boolean AutoCom = Globals.sharedPreferences.getBoolean("AutoCompletion", false);
+        if (AutoCom) {
+            String JsonString = Globals.sharedPreferences.getString("SaveInfo", "null");
+            if (!JsonString.equals("null")) {
+                try {
+                    responseJson = new JSONObject(JsonString);
+                    ETname.setText(responseJson.getString("name"));
+                    ETage.setText(responseJson.getString("age"));
+                    ETphone.setText(responseJson.getString("phone"));
+                    ETemail.setText(responseJson.getString("email"));
+                    ETAverage.setText(responseJson.getString("gradeAverage"));
+                    spinnerStudyYear.setSelection(responseJson.getInt("year"));
+                    spinnerGender.setSelection(responseJson.getInt("gender"));
+                    JSONObject jsonLocation = new JSONObject(responseJson.getString("location"));
+                    Globals.Location = new LatLng(jsonLocation.getDouble("latitude"), jsonLocation.getDouble("longitude"));
+
+                } catch (JSONException e) {
+
+                }
+            }
+        }
     }
 
-    void FixLayoutAspects()
-    {
+
+    void FixLayoutAspects() {
 
         RelativeLayout rl = (RelativeLayout) findViewById(R.id.RLRegisterINFO);
         int childCount = rl.getChildCount();
@@ -350,90 +402,11 @@ public class RegisterInfoActivity extends AppCompatActivity {
         ViewGroup.LayoutParams LPR = (ViewGroup.LayoutParams) rl.getLayoutParams();
 
 
-        if(LPR.width>0)
+        if (LPR.width > 0)
             LPR.width = (int) (LPR.width * Globals.scaleDP);
-        if(LPR.height>0)
+        if (LPR.height > 0)
             LPR.height = (int) (LPR.height * Globals.scaleDP);
-        if(Globals.Ratio >17f / 9f ) {
-            LPR.height = (int) (LPR.height * 1.3f);
-        }
-        rl.setLayoutParams(LPR);
-        for (int i = 0; i < childCount; i++) {
-            View view = rl.getChildAt(i);
-            //RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams((int) (view.getLayoutParams().width * Globals.scaleDP),
-            //        (int) (view.getLayoutParams().height * Globals.scaleDP));
-            RelativeLayout.LayoutParams LP = (RelativeLayout.LayoutParams) view.getLayoutParams();
-            //layoutParams.setMargins((int) (LP.leftMargin * Globals.scaleDP), (int) (LP.topMargin * Globals.scaleDP),
-            //        (int) (LP.rightMargin * Globals.scaleDP), (int) (LP.bottomMargin * Globals.scaleDP));
-            RelativeLayout.LayoutParams NewLP = new RelativeLayout.LayoutParams(LP);
-            int[] rules = LP.getRules();
-            for (int verb = 0; verb < rules.length; verb++) {
-                int subject = rules[verb];
-                NewLP.addRule(verb, subject);
-            }
-            NewLP.setMargins((int) (LP.leftMargin * Globals.scaleDP), (int) (LP.topMargin * Globals.scaleDP),
-                    (int) (LP.rightMargin * Globals.scaleDP), (int) (LP.bottomMargin * Globals.scaleDP));
-            if (NewLP.height > 0 )
-                NewLP.height = (int) (LP.height * Globals.scaleDP);
-            if(NewLP.width > 0)
-                NewLP.width = (int) (LP.width * Globals.scaleDP);
-
-            if (view instanceof Button) {
-                Button button = (Button) view;
-                float size = button.getTextSize();
-                button.setTextSize((button.getTextSize() * Globals.scaleDP * Globals.scaleS) / Globals.DP);
-            }
-            else if (view instanceof TextView) {
-                TextView textView = (TextView) view;
-                float size = textView.getTextSize();
-                textView.setTextSize((textView.getTextSize() * Globals.scaleDP * Globals.scaleS) / Globals.DP);
-            }  else if (view instanceof EditText) {
-                EditText editText = (EditText) view;
-                float size = editText.getTextSize();
-                editText.setTextSize((editText.getTextSize() * Globals.scaleDP * Globals.scaleS) / Globals.DP);
-            } else if (view instanceof ImageView) {
-                ImageView imageView = (ImageView) view;
-                float height = imageView.getHeight();
-                float width = imageView.getWidth();
-                //view.setLayoutParams(NewLP);
-
-                //imageView.setTextSize((imageView.getTextSize() * Globals.scaleDP)/ Globals.DP);
-            } else if (view instanceof Spinner) {
-                Spinner spinner = (Spinner) view;
-                if(Globals.ActualWidth / (float)(Globals.ActualHeight) > 9.0f /16.0f)
-                    NewLP.topMargin = (int)(((NewLP.topMargin / Globals.DP)-15)*Globals.DP) ;
-                //view.setLayoutParams(NewLP);
-            }
-            else if (view instanceof CardView)
-            {
-                if(Globals.Ratio >17f / 9f ) {
-                    NewLP.height = (int) (NewLP.height * 1.1f);
-                }
-            }
-            view.setLayoutParams(NewLP);
-
-            //view.setX(location[0]);
-            //view.setY(location[1]);
-
-            // Do something with v.
-            // …
-
-
-        }
-
-
-
-         rl = (RelativeLayout) findViewById(R.id.RLRegister);
-        childCount = rl.getChildCount();
-
-        LPR = (ViewGroup.LayoutParams) rl.getLayoutParams();
-
-
-        if(LPR.width>0)
-            LPR.width = (int) (LPR.width * Globals.scaleDP);
-        if(LPR.height>0)
-            LPR.height = (int) (LPR.height * Globals.scaleDP);
-        if(Globals.Ratio >17f / 9f ) {
+        if (Globals.Ratio > 17f / 9f) {
             LPR.height = (int) (LPR.height * 1.3f);
         }
         rl.setLayoutParams(LPR);
@@ -481,9 +454,83 @@ public class RegisterInfoActivity extends AppCompatActivity {
                 if (Globals.ActualWidth / (float) (Globals.ActualHeight) > 9.0f / 16.0f)
                     NewLP.topMargin = (int) (((NewLP.topMargin / Globals.DP) - 15) * Globals.DP);
                 //view.setLayoutParams(NewLP);
-            } else if (view instanceof CardView)
-            {
-                if(Globals.Ratio >17f / 9f ) {
+            } else if (view instanceof CardView) {
+                if (Globals.Ratio > 17f / 9f) {
+                    NewLP.height = (int) (NewLP.height * 1.1f);
+                }
+            }
+            view.setLayoutParams(NewLP);
+
+            //view.setX(location[0]);
+            //view.setY(location[1]);
+
+            // Do something with v.
+            // …
+
+
+        }
+
+
+        rl = (RelativeLayout) findViewById(R.id.RLRegister);
+        childCount = rl.getChildCount();
+
+        LPR = (ViewGroup.LayoutParams) rl.getLayoutParams();
+
+
+        if (LPR.width > 0)
+            LPR.width = (int) (LPR.width * Globals.scaleDP);
+        if (LPR.height > 0)
+            LPR.height = (int) (LPR.height * Globals.scaleDP);
+        if (Globals.Ratio > 17f / 9f) {
+            LPR.height = (int) (LPR.height * 1.3f);
+        }
+        rl.setLayoutParams(LPR);
+        for (int i = 0; i < childCount; i++) {
+            View view = rl.getChildAt(i);
+            //RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams((int) (view.getLayoutParams().width * Globals.scaleDP),
+            //        (int) (view.getLayoutParams().height * Globals.scaleDP));
+            RelativeLayout.LayoutParams LP = (RelativeLayout.LayoutParams) view.getLayoutParams();
+            //layoutParams.setMargins((int) (LP.leftMargin * Globals.scaleDP), (int) (LP.topMargin * Globals.scaleDP),
+            //        (int) (LP.rightMargin * Globals.scaleDP), (int) (LP.bottomMargin * Globals.scaleDP));
+            RelativeLayout.LayoutParams NewLP = new RelativeLayout.LayoutParams(LP);
+            int[] rules = LP.getRules();
+            for (int verb = 0; verb < rules.length; verb++) {
+                int subject = rules[verb];
+                NewLP.addRule(verb, subject);
+            }
+            NewLP.setMargins((int) (LP.leftMargin * Globals.scaleDP), (int) (LP.topMargin * Globals.scaleDP),
+                    (int) (LP.rightMargin * Globals.scaleDP), (int) (LP.bottomMargin * Globals.scaleDP));
+            if (NewLP.height > 0)
+                NewLP.height = (int) (LP.height * Globals.scaleDP);
+            if (NewLP.width > 0)
+                NewLP.width = (int) (LP.width * Globals.scaleDP);
+
+            if (view instanceof Button) {
+                Button button = (Button) view;
+                float size = button.getTextSize();
+                button.setTextSize((button.getTextSize() * Globals.scaleDP * Globals.scaleS) / Globals.DP);
+            } else if (view instanceof TextView) {
+                TextView textView = (TextView) view;
+                float size = textView.getTextSize();
+                textView.setTextSize((textView.getTextSize() * Globals.scaleDP * Globals.scaleS) / Globals.DP);
+            } else if (view instanceof EditText) {
+                EditText editText = (EditText) view;
+                float size = editText.getTextSize();
+                editText.setTextSize((editText.getTextSize() * Globals.scaleDP * Globals.scaleS) / Globals.DP);
+            } else if (view instanceof ImageView) {
+                ImageView imageView = (ImageView) view;
+                float height = imageView.getHeight();
+                float width = imageView.getWidth();
+                //view.setLayoutParams(NewLP);
+
+                //imageView.setTextSize((imageView.getTextSize() * Globals.scaleDP)/ Globals.DP);
+            } else if (view instanceof Spinner) {
+                Spinner spinner = (Spinner) view;
+                if (Globals.ActualWidth / (float) (Globals.ActualHeight) > 9.0f / 16.0f)
+                    NewLP.topMargin = (int) (((NewLP.topMargin / Globals.DP) - 15) * Globals.DP);
+                //view.setLayoutParams(NewLP);
+            } else if (view instanceof CardView) {
+                if (Globals.Ratio > 17f / 9f) {
                     NewLP.height = (int) (NewLP.height * 1.1f);
                 }
             }
@@ -498,9 +545,6 @@ public class RegisterInfoActivity extends AppCompatActivity {
 
 
         }
-
-
-
 
 
     }

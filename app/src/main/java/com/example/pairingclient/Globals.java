@@ -1,5 +1,6 @@
 package com.example.pairingclient;
 
+import android.content.SharedPreferences;
 import android.util.DisplayMetrics;
 
 import com.google.android.gms.maps.model.LatLng;
@@ -26,4 +27,6 @@ public class Globals {
     public static float scaleS= 1;
     public static float DP;
     public static float Ratio;
+    public static SharedPreferences sharedPreferences;
+    public static SharedPreferences.Editor editor;
 }

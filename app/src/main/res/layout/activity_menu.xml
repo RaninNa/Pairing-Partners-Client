@@ -17,62 +17,74 @@
             android:layout_marginTop="210dp"
             android:background="@color/White"></RelativeLayout>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/CardViewMenu"
-            android:layout_width="332.5dp"
-            android:layout_height="364dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="75dp"
-            app:cardBackgroundColor="@color/White"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="7dp">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CardViewMenu"
+        android:layout_width="332.5dp"
+        android:layout_height="420dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp"
+        app:cardBackgroundColor="@color/White"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="7dp">
 
-
-            <ImageView
-                android:id="@+id/imageViewLogo"
-                android:layout_width="173.1dp"
-                android:layout_height="71.4dp"
-                android:layout_gravity="center|top"
-                android:layout_marginTop="45dp"
-                android:background="@drawable/findpairlogo" />
-
-            <Button
-                android:id="@+id/checkPartnerBtn"
-                android:layout_width="290dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/drawable_button"
-                android:fontFamily="@font/newfont"
-                android:paddingBottom="5dp"
-                android:text="רשימת השותפים"
-                android:textSize="29dp" />
-
-            <Button
-                android:id="@+id/newCourseBtn"
-                android:layout_width="300dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="100dp"
-                android:background="@drawable/drawable_button"
-                android:fontFamily="@font/newfont"
-                android:paddingBottom="5dp"
-                android:text="הרשמה לקורס חדש"
-                android:textSize="29dp" />
-
-
-        </androidx.cardview.widget.CardView>
 
         <Button
-            android:id="@+id/BtnExit"
-            android:layout_width="193dp"
+            android:id="@+id/checkPartnerBtn"
+            android:layout_width="290dp"
             android:layout_height="50dp"
-            android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:layout_marginTop="520dp"
+            android:layout_marginTop="-20dp"
             android:background="@drawable/drawable_button"
             android:fontFamily="@font/newfont"
             android:paddingBottom="5dp"
-            android:text="יציאה"
+            android:text="רשימת השותפים"
             android:textSize="29dp" />
+
+        <Button
+            android:id="@+id/newCourseBtn"
+            android:layout_width="290dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/drawable_button"
+            android:fontFamily="@font/newfont"
+            android:paddingBottom="5dp"
+            android:text="הרשמה לקורס חדש"
+            android:textSize="29dp" />
+
+        <Button
+            android:id="@+id/btnSettings"
+            android:layout_width="290dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="140dp"
+            android:background="@drawable/drawable_button"
+            android:fontFamily="@font/newfont"
+            android:paddingBottom="5dp"
+            android:text="הגדרות"
+            android:textSize="29dp" />
+
+        <ImageView
+            android:id="@+id/imageViewLogo"
+            android:layout_width="173.1dp"
+            android:layout_height="71.4dp"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="45dp"
+            android:background="@drawable/findpairlogo" />
+
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/BtnExit"
+        android:layout_width="193dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="550dp"
+        android:background="@drawable/drawable_button"
+        android:fontFamily="@font/newfont"
+        android:paddingBottom="5dp"
+        android:text="יציאה"
+        android:textSize="29dp" />
 </RelativeLayout>
