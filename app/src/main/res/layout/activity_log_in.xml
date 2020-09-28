@@ -43,8 +43,8 @@
         android:id="@+id/imageViewUser"
         android:layout_width="25.7dp"
         android:layout_height="27.1dp"
-        android:layout_gravity="center|top"
-        android:layout_marginLeft="115dp"
+        android:layout_gravity="left|top"
+        android:layout_marginLeft="25dp"
         android:layout_marginTop="195dp"
         android:background="@drawable/usericon" />
 
@@ -60,10 +60,11 @@
         android:backgroundTint="@color/BorderColor"
         android:ems="10"
         android:fontFamily="@font/newfont"
-        android:gravity="right"
+        android:gravity="left"
         android:hint="שם משתמש"
         android:inputType="textPersonName"
         android:paddingRight="10dp"
+        android:paddingLeft="10dp"
         android:textColor="@color/BorderColor"
         android:textColorHint="@color/hintColor"
         android:textSize="29dp" />
@@ -73,8 +74,8 @@
         android:id="@+id/imageViewPass"
         android:layout_width="20dp"
         android:layout_height="37.4dp"
-        android:layout_gravity="center|top"
-        android:layout_marginLeft="115dp"
+        android:layout_gravity="left|top"
+        android:layout_marginLeft="25dp"
         android:layout_marginTop="265dp"
         android:background="@drawable/passicon" />
 
@@ -86,10 +87,11 @@
         android:layout_marginTop="110dp"
         android:backgroundTint="@color/BorderColor"
         android:fontFamily="@font/newfont"
-        android:gravity="right"
+        android:gravity="left"
         android:hint="סיסמה"
         android:inputType="textPassword"
         android:paddingRight="10dp"
+        android:paddingLeft="10dp"
         android:textColor="@color/BorderColor"
         android:textColorHint="@color/hintColor"
         android:textSize="29dp" />
