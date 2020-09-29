@@ -127,17 +127,17 @@ public class SettingsActivity extends AppCompatActivity {
                     final JSONObject SaveInfo = new JSONObject();
                     try {
                         SaveInfo.put("user_name", response.getString("user_name"));
-                        SaveInfo.put("name", ETname);
+                        SaveInfo.put("name", ETname.getText());
                         SaveInfo.put("gender", spinnerGender.getSelectedItemPosition());
                         JSONObject locJson = new JSONObject();
                         locJson.put("latitude", Globals.Location.latitude);
                         locJson.put("longitude", Globals.Location.longitude);
                         SaveInfo.put("location", locJson.toString());
-                        SaveInfo.put("age", ETage);
-                        SaveInfo.put("phone", ETphone);
-                        SaveInfo.put("email", ETemail);
+                        SaveInfo.put("age", ETage.getText());
+                        SaveInfo.put("phone", ETphone.getText());
+                        SaveInfo.put("email", ETemail.getText());
                         SaveInfo.put("year", spinnerStudyYear.getSelectedItemPosition());
-                        SaveInfo.put("gradeAverage", ETAverage);
+                        SaveInfo.put("gradeAverage", ETAverage.getText());
                         SaveInfo.put("workPlan", response.getString("workPlan"));
                         SaveInfo.put("meeting", response.getString("meeting"));
                         SaveInfo.put("prefGen", response.getString("prefGen"));
@@ -147,6 +147,9 @@ public class SettingsActivity extends AppCompatActivity {
                         SaveInfo.put("faculty", response.getString("faculty"));
                         SaveInfo.put("course", response.getString("course"));
                         SaveInfo.put("workType", response.getString("workType"));
+                        Globals.editor = Globals.sharedPreferences.edit();
+                        Globals.editor.putString("SaveInfo", SaveInfo.toString());
+                        Globals.editor.commit();
 
                     } catch (JSONException e) {
                         e.printStackTrace();
