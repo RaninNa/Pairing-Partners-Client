@@ -34,10 +34,11 @@
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="-20dp"
-            android:background="@drawable/drawable_button"
+            android:background="@drawable/drawable_button_empty"
             android:fontFamily="@font/newfont"
             android:paddingBottom="5dp"
             android:text="רשימת השותפים"
+            android:textColor="@color/BorderColor"
             android:textSize="29dp" />
 
         <Button
@@ -46,10 +47,11 @@
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
-            android:background="@drawable/drawable_button"
+            android:background="@drawable/drawable_button_empty"
             android:fontFamily="@font/newfont"
             android:paddingBottom="5dp"
             android:text="הרשמה לקורס חדש"
+            android:textColor="@color/BorderColor"
             android:textSize="29dp" />
 
         <Button
@@ -58,10 +60,11 @@
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="140dp"
-            android:background="@drawable/drawable_button"
+            android:background="@drawable/drawable_button_empty"
             android:fontFamily="@font/newfont"
             android:paddingBottom="5dp"
             android:text="הגדרות"
+            android:textColor="@color/BorderColor"
             android:textSize="29dp" />
 
         <ImageView
