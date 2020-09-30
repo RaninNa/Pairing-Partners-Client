@@ -49,7 +49,7 @@ public class RegisterUserName extends AppCompatActivity {
                             if(taken)
                             {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(RegisterUserName.this);
-                                builder.setMessage("Username already used")
+                                builder.setMessage("חשבון כבר קיים")
                                         .setNegativeButton("Retry", null)
                                         .create()
                                         .show();
@@ -58,6 +58,7 @@ public class RegisterUserName extends AppCompatActivity {
                             String id = jsonResponse.getString("id");
                             if (success) {
                                 Toast.makeText(getApplicationContext(), "שליחה התבצעה", Toast.LENGTH_LONG).show();
+                                finish();
                                 //Intent intent = new Intent();
                                 //getActivity().startActivity(intent);
                                 //Intent intent = new Intent(AuthenticateUser.this, RegisterEventActivity.class);
@@ -72,11 +73,6 @@ public class RegisterUserName extends AppCompatActivity {
 
                             } else {
                                 Toast.makeText(getApplicationContext(), "שליחה נכשלה", Toast.LENGTH_LONG).show();
-                                AlertDialog.Builder builder = new AlertDialog.Builder(RegisterUserName.this);
-                                builder.setMessage("Register Failed")
-                                        .setNegativeButton("Retry", null)
-                                        .create()
-                                        .show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
